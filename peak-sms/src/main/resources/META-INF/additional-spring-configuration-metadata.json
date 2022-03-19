@@ -1,0 +1,43 @@
+{
+  "properties": [
+	{
+	  "name": "peak.sms.ali.regionId",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.ali.regionId."
+	},
+	{
+	  "name": "peak.sms.ali.accessKeyId",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.ali.accessKeyId."
+	},
+	{
+	  "name": "peak.sms.ali.accessKeySecret",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.ali.accessKeySecret."
+	},
+	{
+	  "name": "peak.sms.ali.signName",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.ali.signName."
+	},
+	{
+	  "name": "peak.sms.tencent.secretId",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.tencent.secretId."
+	},
+	{
+	  "name": "peak.sms.tencent.secretKey",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.tencent.secretKey."
+	},
+	{
+	  "name": "peak.sms.tencent.sdkAppId",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.tencent.sdkAppId."
+	},
+	{
+	  "name": "peak.sms.tencent.signName",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.sms.tencent.signName."
+	}
+  ] }
