@@ -1,4 +1,4 @@
-package exception;
+package ink.gfwl.sms.exception;
 
 /**
  * 短信异常

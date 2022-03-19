@@ -1,4 +1,4 @@
-package com.peak.sms.model;
+package ink.gfwl.sms.model;
 
 /**
  * 短信发送参数

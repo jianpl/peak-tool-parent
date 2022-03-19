@@ -1,16 +1,16 @@
-package com.peak.sms;
+package ink.gfwl.sms;
 
-import com.peak.common.math.Affirm;
-import com.peak.sms.base.Messages;
-import com.peak.sms.model.MessageSendRequest;
-import com.peak.sms.model.TencentMessageRequest;
+import ink.gfwl.common.math.Affirm;
+import ink.gfwl.sms.base.Messages;
+import ink.gfwl.sms.model.MessageSendRequest;
+import ink.gfwl.sms.model.TencentMessageRequest;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.sms.v20190711.SmsClient;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
-import exception.SmsException;
+import ink.gfwl.sms.exception.SmsException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.peak</groupId>
+    <groupId>ink.gfwl</groupId>
     <artifactId>peak-tool-parent</artifactId>
     <version>1.0.0</version>
     <modules>
@@ -87,7 +87,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.peak</groupId>
+                <groupId>ink.gfwl</groupId>
                 <artifactId>peak-common</artifactId>
                 <version>${version}</version>
             </dependency>

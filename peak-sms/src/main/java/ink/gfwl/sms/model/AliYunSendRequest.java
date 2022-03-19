@@ -1,4 +1,4 @@
-package com.peak.sms.model;
+package ink.gfwl.sms.model;
 
 import java.util.Map;
 

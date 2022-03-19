@@ -1,6 +1,6 @@
-package com.peak.sms.base;
+package ink.gfwl.sms.base;
 
-import com.peak.sms.model.MessageSendRequest;
+import ink.gfwl.sms.model.MessageSendRequest;
 
 /**
  * 短信接口

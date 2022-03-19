@@ -1,4 +1,4 @@
-package com.peak.common.math;
+package ink.gfwl.common.math;
 
 import java.util.function.Supplier;
 

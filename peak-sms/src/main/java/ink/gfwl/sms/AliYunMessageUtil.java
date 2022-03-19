@@ -1,4 +1,4 @@
-package com.peak.sms;
+package ink.gfwl.sms;
 
 
 import com.alibaba.fastjson.JSONObject;
@@ -9,11 +9,11 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
-import com.peak.common.math.Affirm;
-import com.peak.sms.base.Messages;
-import com.peak.sms.model.AliYunSendRequest;
-import com.peak.sms.model.MessageSendRequest;
-import exception.SmsException;
+import ink.gfwl.common.math.Affirm;
+import ink.gfwl.sms.base.Messages;
+import ink.gfwl.sms.model.AliYunSendRequest;
+import ink.gfwl.sms.model.MessageSendRequest;
+import ink.gfwl.sms.exception.SmsException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

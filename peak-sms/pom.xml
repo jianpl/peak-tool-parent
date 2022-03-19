@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>peak-tool-parent</artifactId>
-        <groupId>com.peak</groupId>
+        <groupId>ink.gfwl</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -31,7 +31,7 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.peak</groupId>
+            <groupId>ink.gfwl</groupId>
             <artifactId>peak-common</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -49,11 +49,7 @@
             <artifactId>tencentcloud-sdk-java</artifactId>
             <version>${tencentcloud.version}</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
 </project>
