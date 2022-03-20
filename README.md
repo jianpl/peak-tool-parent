@@ -6,6 +6,18 @@
 
 
 
+> 使用说明： 在Application启动类添加包扫描： ink.gfwl
+>
+> 子包说明：
+>
+> 1. ink.gfwl.common 公共资源，下方工具第三方接口api秘钥信息
+> 2. ink.gfwl.oss 对象存储
+> 3. ink.gfwl.pay 支付
+> 4. ink.gfwl.sms 短信
+> 5. ink.gfwl.socia 社交登录
+
+
+
 > 说明：下方功能开发已完成，正在进行代码迁移优化，后续会陆续更新到GITHUB，且GITHUB作为唯一开源仓库，使用过程中若出现问题欢迎提交issues！
 >
 > Issues提交地址：https://github.com/jianpl/peak-tool-parent/issues/new
@@ -123,7 +135,23 @@ peak:
 
 
 
+### 2.6 全部配置文件
 
+```yaml
+# 全部配置文件，按需使用
+peak:
+  sms:
+    ali:
+      regionId: 地区
+      accessKeyId: accessKeyId
+      accessKeySecret: accessKeySecret
+      signName: 签名
+    tencent:
+      secretId: secretId
+      secretKey: secretKey
+      sdkAppId: appId
+      signName: 签名
+```
 
 
 

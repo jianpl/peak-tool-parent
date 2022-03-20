@@ -6,6 +6,7 @@ import java.util.function.Supplier;
  * 断言
  * @author jianpòlan
  * @version 1.0
+ * <p>url: https://github.com/jianpl/peak-tool-parent</p>
  **/
 public class Affirm {
 

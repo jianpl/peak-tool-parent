@@ -4,6 +4,7 @@ package ink.gfwl.sms.exception;
  * 短信异常
  * @author jianpòlan
  * @version 1.0
+ * <p>url: https://github.com/jianpl/peak-tool-parent</p>
  **/
 public class SmsException extends RuntimeException{
 
