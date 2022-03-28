@@ -20,6 +20,7 @@
         <module>peak-pay</module>
         <module>peak-social</module>
         <module>peak-oss</module>
+        <module>peak-sample</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -35,6 +36,13 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>ink.gfwl</groupId>
+                <artifactId>peak-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-ocr</artifactId>
@@ -88,11 +96,6 @@
             </dependency>
 
             <dependency>
-                <groupId>ink.gfwl</groupId>
-                <artifactId>peak-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fast.json.version}</version>
@@ -139,7 +142,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
                 <configuration>
                     <target>1.8</target>
                     <source>1.8</source>
@@ -177,7 +179,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>

@@ -4,9 +4,35 @@
 
 # JAVA 常用工具
 
+> 使用说明
+>
+> ```xml
+> <!-- oss -->
+> <dependency>
+>   <groupId>ink.gfwl</groupId>
+>   <artifactId>peak-oss</artifactId>
+>   <version>${lastVersion}</version>
+> </dependency>
+> <!-- 支付 -->
+> <dependency>
+>   <groupId>ink.gfwl</groupId>
+>   <artifactId>peak-pay</artifactId>
+>   <version>${lastVersion}</version>
+> </dependency>
+> <!-- 短信 -->
+> <dependency>
+>   <groupId>ink.gfwl</groupId>
+>   <artifactId>peak-sms</artifactId>
+>   <version>${lastVersion}</version>
+> </dependency>
+> <!-- 社交登录 -->
+> <dependency>
+>   <groupId>ink.gfwl</groupId>
+>   <artifactId>peak-social</artifactId>
+>   <version>${lastVersion}</version>
+> </dependency>
 
-
-> 使用说明： 在Application启动类添加包扫描： ink.gfwl
+> 
 >
 > 子包说明：
 >
@@ -15,6 +41,7 @@
 > 3. ink.gfwl.pay 支付
 > 4. ink.gfwl.sms 短信
 > 5. ink.gfwl.socia 社交登录
+> 5. peak-sample 为示例代码
 
 
 
@@ -24,134 +51,8 @@
 >
 > GIT地址：https://github.com/jianpl/peak-tool-parent.git
 >
-> QQ交流群: https://jq.qq.com/?_wv=1027&k=OEVvMhWs
->
-> 没及时更新可以进去催更
 
 
-
-
-## 1. 目录结构描述
-
-peak-parent-tool
-├── peak-common  --  基础模块
-├── peak-oss --  对象存储模块
-├── peak-pay -- 支付模块
-├── peak-sms -- 短信模块(阿里云、腾讯云已更)
-├── peak-social -- 社交模块
-LICENSE -- README.md
-pom.xml -- pom.xml
-README.md -- readme
-
-## 2. 模块介绍
-
-### 2.1 peak-common
-
-基础模块，常用的功能
-
-### 2.2 peak-oss
-
-#### 	2.2.1 阿里云对象存储
-
-#### 	2.2.2 腾讯云对象存储
-
-### 2.3 peak-pay
-
-#### 	2.3.1 微信支付
-
-#### 	2.3.2 支付宝支付
-
-#### 	2.3.3 Apple 内购
-
-### 2.4 peak-sms
-
-```java
-// 调用示例 阿里云
-@Resource
-private AliYunMessageUtil aliYunMessageUtil;
-
-@Test
-public void testSendAliYun(){
-    AliYunSendRequest aliYunSendRequest = new AliYunSendRequest();
-    aliYunSendRequest.setPhone(""); // 手机号，格式参考官方文档
-    aliYunSendRequest.setTemplateId(""); // 模板ID
-    aliYunSendRequest.setParams(null); // 短信模板参数
-    aliYunMessageUtil.sendMessage(aliYunSendRequest);
-}
-
-// 调用示例 腾讯云
-@Resource
-private TencentMessageUtil tencentMessageUtil;
-
-@Test
-public void testTencentSend(){
-    TencentMessageRequest tencentMessageRequest = new TencentMessageRequest();
-    tencentMessageRequest.setPhone(""); // 手机号，格式参考官方文档
-    tencentMessageRequest.setTemplateId(""); // 模板ID
-    tencentMessageRequest.setTemplateParam(null); // 短信模板参数
-    tencentMessageUtil.sendMessage(tencentMessageRequest);
-}
-```
-
-
-
-#### 	2.4.1 阿里云
-
-```yaml
-# 配置文件
-peak:
-  sms:
-    ali:
-      regionId: 地区
-      accessKeyId: accessKeyId
-      accessKeySecret: accessKeySecret
-      signName: 签名
-```
-
-
-
-#### 	2.4.2 腾讯云
-
-```yaml
-# 配置文件
-peak:
-  sms:
-    tencent:
-      secretId: secretId
-      secretKey: secretKey
-      sdkAppId: appId
-      signName: 签名
-```
-
-
-
-### 2.5 peak-social
-
-#### 	2.5.1 微信登录 
-
-#### 	2.5.2 支付宝登录
-
-#### 	2.5.3 Apple登录
-
-
-
-### 2.6 全部配置文件
-
-```yaml
-# 全部配置文件，按需使用
-peak:
-  sms:
-    ali:
-      regionId: 地区
-      accessKeyId: accessKeyId
-      accessKeySecret: accessKeySecret
-      signName: 签名
-    tencent:
-      secretId: secretId
-      secretKey: secretKey
-      sdkAppId: appId
-      signName: 签名
-```
 
 
 

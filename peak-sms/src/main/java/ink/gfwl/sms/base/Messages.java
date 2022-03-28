@@ -2,6 +2,8 @@ package ink.gfwl.sms.base;
 
 import ink.gfwl.sms.model.MessageSendRequest;
 
+import java.util.List;
+
 /**
  * 短信接口
  * @author jianpòlan
@@ -12,5 +14,4 @@ import ink.gfwl.sms.model.MessageSendRequest;
 public interface Messages {
 
     String sendMessage(MessageSendRequest messageSendRequest);
-
 }
