@@ -49,6 +49,46 @@
 	  "name": "peak.sms.tencent.signName",
 	  "type": "java.lang.String",
 	  "description": "tencent sdkAppId."
+	},
+	{
+	  "name": "peak.social.ali.getWay",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.ali.getWay."
+	},
+	{
+	  "name": "peak.social.ali.appId",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.ali.appId."
+	},
+	{
+	  "name": "peak.social.ali.privateKey",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.ali.privateKey."
+	},
+	{
+	  "name": "peak.social.ali.publicKey",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.ali.publicKey."
+	},
+	{
+	  "name": "peak.social.wx.wxAppId",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.wx.wxAppId."
+	},
+	{
+	  "name": "peak.social.wx.wxAppSecret",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.wx.wxAppSecret."
+	},
+	{
+	  "name": "peak.social.wxWeb.wxWebAppId",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.wxWeb.wxWebAppId."
+	},
+	{
+	  "name": "peak.social.wxWeb.wxWebAppSecret",
+	  "type": "java.lang.String",
+	  "description": "Description for peak.social.wxWeb.wxWebAppSecret."
 	}
   ]
 }
