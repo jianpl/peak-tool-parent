@@ -1,36 +1,33 @@
 package ink.gfwl.common.properties.sms;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 /**
  * tencent cloud sms config
  * @author jianpòlan
  * @version 1.0
  **/
-@Component
+@ConfigurationProperties(
+        prefix = "peak.sms.tencent",
+        ignoreInvalidFields = true
+)
 public class TencentSmsProperties {
 
     /**
      * secretId
      */
-    @Value("${peak.sms.tencent.secretId}")
     private String secretId;
     /**
      * secretKey
      */
-    @Value("${peak.sms.tencent.secretKey}")
     private String secretKey;
     /**
      * sdkAppId
      */
-    @Value("${peak.sms.tencent.sdkAppId}")
     private String sdkAppId;
     /**
      * signName
      */
-    @Value("${peak.sms.tencent.signName}")
     private String signName;
 
     /**

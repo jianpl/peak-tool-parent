@@ -1,7 +1,6 @@
 package ink.gfwl.common.properties.sms;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * 助通短信配置
@@ -9,19 +8,20 @@ import org.springframework.stereotype.Component;
  * @version 1.0
  * <a href='https://doc.zthysms.com/web/#/1/4'>助通接口文档</a>
  **/
-@Component
+@ConfigurationProperties(
+        prefix = "peak.sms.zthy",
+        ignoreInvalidFields = true
+)
 public class ZthySmsProperties {
 
     /**
      * 用户名
      */
-    @Value("${peak.sms.zthy.username}")
     private String username;
 
     /**
      * 接口密码
      */
-    @Value("${peak.sms.zthy.password}")
     private String password;
 
     /**

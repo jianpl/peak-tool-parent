@@ -27,3 +27,8 @@ hs_err_pid*
 *.properties
 
 target
+
+
+# peak-jd 未开源代码
+peak-jd
+peak-jd/*

@@ -1,38 +1,36 @@
 package ink.gfwl.common.properties.sms;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * aliyun sms config
  * @author jianpòlan
  * @version 1.0
  **/
-@Component
+@ConfigurationProperties(
+        prefix = "peak.sms.ali",
+        ignoreInvalidFields = true
+)
 public class AliSmsProperties {
 
     /**
      * regionId
      */
-    @Value("${peak.sms.ali.regionId}")
     private String regionId;
 
     /**
      * accessKeyId
      */
-    @Value("${peak.sms.ali.accessKeyId}")
     private String accessKeyId;
 
     /**
      * accessKeySecret
      */
-    @Value("${peak.sms.ali.accessKeySecret}")
     private String accessKeySecret;
 
     /**
      * signName
      */
-    @Value("${peak.sms.ali.signName}")
     private String signName;
 
     /**
