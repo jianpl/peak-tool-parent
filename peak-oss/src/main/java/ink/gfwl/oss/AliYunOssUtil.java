@@ -5,7 +5,8 @@ import com.aliyun.oss.common.auth.DefaultCredentialProvider;
 import com.aliyun.oss.model.Bucket;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.ObjectMetadata;
-import org.springframework.beans.factory.annotation.Value;
+import ink.gfwl.common.properties.oss.AliYunOssProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,17 +24,13 @@ import java.io.InputStream;
 @Service
 public class AliYunOssUtil {
 
-    @Value("${peak.oss.ali.endPoint}")
-    private static String endPoint;
-    @Value("${peak.oss.ali.accessKeyId}")
-    private static String accessKeyId;
-    @Value("${peak.oss.ali.accessKeySecret}")
-    private static String accessKeySecret;
+    @Autowired
+    private AliYunOssProperties aliYunOssProperties;
 
     /**
      * 获取阿里云OSS客户端对象
      */
-    private final OSSClient ossClient = new OSSClient(endPoint, new DefaultCredentialProvider(accessKeyId ,accessKeySecret), null);
+    private final OSSClient ossClient = new OSSClient(aliYunOssProperties.getEndPoint(), new DefaultCredentialProvider(aliYunOssProperties.getAccessKeyId() ,aliYunOssProperties.getAccessKeySecret()), null);
 
     /**
      * 是否使用随机文件名
@@ -217,7 +214,7 @@ public class AliYunOssUtil {
      * @param fileName 文件名
      * @return 文件的contentType
      */
-    private static String getContentType(String fileName) {
+    public static String getContentType(String fileName) {
         // 文件的后缀名
         String fileExtension = fileName.substring(fileName.lastIndexOf("."));
         if (".bmp".equalsIgnoreCase(fileExtension)) {

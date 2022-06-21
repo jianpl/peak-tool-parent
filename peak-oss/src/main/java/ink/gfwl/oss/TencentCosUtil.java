@@ -7,7 +7,8 @@ import com.qcloud.cos.exception.CosClientException;
 import com.qcloud.cos.exception.CosServiceException;
 import com.qcloud.cos.model.*;
 import com.qcloud.cos.region.Region;
-import org.springframework.beans.factory.annotation.Value;
+import ink.gfwl.common.properties.oss.TencentCosProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -21,25 +22,15 @@ import java.io.File;
 @Service
 public class TencentCosUtil {
 
-    @Value("${peak.oss.tencent.accessKey}")
-    private String accessKey;
-    @Value("${peak.oss.tencent.secretKey}")
-    private String secretKey;
-    @Value("${peak.oss.tencent.bucketName}")
-    private String bucketName;
-    @Value("${peak.oss.tencent.appId}")
-    private String appId;
-    @Value("${peak.oss.tencent.regionId}")
-    private String regionId;
-    @Value("${peak.oss.tencent.tempFilePath}")
-    private String tempFilePath;
+    @Autowired
+    private TencentCosProperties tencentCosProperties;
 
     /**
      * 初始化CosClient相关配置， appid、accessKey、secretKey、region
      * @return COSClient
      */
     public COSClient getCosClient() {
-        return new COSClient(new BasicCOSCredentials(accessKey, secretKey), new ClientConfig(new Region(regionId)));
+        return new COSClient(new BasicCOSCredentials(tencentCosProperties.getAccessKey(), tencentCosProperties.getSecretKey()), new ClientConfig(new Region(tencentCosProperties.getRegionId())));
     }
 
     /**
@@ -49,7 +40,7 @@ public class TencentCosUtil {
      * @return tag
      */
     public String uploadFile(File file, String fileName) {
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName + appId, fileName, file);
+        PutObjectRequest putObjectRequest = new PutObjectRequest(tencentCosProperties.getBucketName() +"-"+ tencentCosProperties.getAppId(), fileName, file);
         // 设置存储类型, 默认是标准(Standard), 低频(standard_ia),一般为标准的
         putObjectRequest.setStorageClass(StorageClass.Standard);
         COSClient cc = getCosClient();
@@ -82,7 +73,7 @@ public class TencentCosUtil {
      * @return file
      */
     public File downLoadFile(String bucketName, String fileName, boolean override) {
-        File downFile = new File(tempFilePath + File.separator + fileName);
+        File downFile = new File(tencentCosProperties.getTempFilePath() + File.separator + fileName);
         // 已存在则直接返回
         if(downFile.exists() && downFile.length() > 0 && !override){
             return downFile;
@@ -91,7 +82,7 @@ public class TencentCosUtil {
             downFile.deleteOnExit();
         }
         COSClient cc = getCosClient();
-        GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName + appId, fileName);
+        GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName +"-"+ tencentCosProperties.getAppId(), fileName);
         cc.getObject(getObjectRequest, downFile);
         cc.shutdown();
         return downFile;
@@ -105,7 +96,7 @@ public class TencentCosUtil {
     public void deleteFile(String bucketName, String fileName) {
         COSClient cc = getCosClient();
         try {
-            cc.deleteObject(bucketName + appId, fileName);
+            cc.deleteObject(bucketName +"-"+ tencentCosProperties.getAppId(), fileName);
         } catch (CosClientException e) {
             e.printStackTrace();
         } finally {
@@ -120,7 +111,7 @@ public class TencentCosUtil {
     public void deleteBucket(String bucketName){
         COSClient cc = getCosClient();
         try {
-            cc.deleteBucket(bucketName + appId);
+            cc.deleteBucket(bucketName +"-"+ tencentCosProperties.getAppId());
         } catch (CosClientException e) {
             e.printStackTrace();
         }
@@ -135,7 +126,7 @@ public class TencentCosUtil {
      */
     public boolean doesBucketExist(String bucketName) throws CosClientException, CosServiceException {
         COSClient cc = getCosClient();
-        return cc.doesBucketExist(bucketName + appId);
+        return cc.doesBucketExist(bucketName +"-"+ tencentCosProperties.getAppId());
     }
 
     /**
@@ -149,7 +140,7 @@ public class TencentCosUtil {
         COSClient cc = getCosClient();
         // 获取 bucket 下成员（设置 delimiter）
         ListObjectsRequest listObjectsRequest = new ListObjectsRequest();
-        listObjectsRequest.setBucketName(bucketName + appId);
+        listObjectsRequest.setBucketName(bucketName +"-"+ tencentCosProperties.getAppId());
         // 设置 list 的 prefix, 表示 list 出来的文件 key 都是以这个 prefix 开始
         listObjectsRequest.setPrefix("");
         // 设置 delimiter 为/, 即获取的是直接成员，不包含目录下的递归子成员
@@ -171,7 +162,7 @@ public class TencentCosUtil {
     public String getBucketLocation(String bucketName) throws CosClientException , CosServiceException{
         COSClient cosClient = getCosClient();
         // bucket 的命名规则为{name}-{appid} ，此处填写的存储桶名称必须为此格式
-        return cosClient.getBucketLocation(bucketName + appId);
+        return cosClient.getBucketLocation(bucketName +"-"+ tencentCosProperties.getAppId());
     }
 
 }

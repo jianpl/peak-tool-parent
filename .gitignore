@@ -31,4 +31,8 @@ target
 
 # peak-jd 未开源代码
 peak-jd
-peak-jd/*
+peak-jd/**.*
+peak-jd/pom.xml
+# peak-sample 未开源代码
+peak-sample
+peak-sample/**

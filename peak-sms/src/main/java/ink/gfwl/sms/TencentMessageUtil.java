@@ -1,18 +1,18 @@
 package ink.gfwl.sms;
 
-import ink.gfwl.common.math.Affirm;
-import ink.gfwl.common.properties.sms.TencentSmsProperties;
-import ink.gfwl.sms.base.Messages;
-import ink.gfwl.sms.model.MessageSendRequest;
-import ink.gfwl.sms.model.TencentMessageRequest;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.sms.v20190711.SmsClient;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
+import ink.gfwl.common.math.Affirm;
+import ink.gfwl.common.properties.sms.TencentSmsProperties;
+import ink.gfwl.sms.base.Messages;
 import ink.gfwl.sms.exception.SmsException;
-import org.springframework.stereotype.Service;
+import ink.gfwl.sms.model.MessageSendRequest;
+import ink.gfwl.sms.model.TencentMessageRequest;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
@@ -23,7 +23,7 @@ import javax.annotation.Resource;
  * @since 1.0
  * <p>url: https://github.com/jianpl/peak-tool-parent</p>
  */
-@Service
+@Component
 public class TencentMessageUtil implements Messages {
 
     @Resource

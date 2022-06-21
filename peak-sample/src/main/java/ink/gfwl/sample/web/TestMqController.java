@@ -1,13 +1,7 @@
 package ink.gfwl.sample.web;
 
 import com.alibaba.fastjson.JSONObject;
-import ink.gfwl.sample.config.Produce;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * TODO
@@ -16,29 +10,24 @@ import javax.annotation.Resource;
  * @version 1.0
  **/
 @RestController
-@RequestMapping("/api/mq")
+@RequestMapping("/api/http")
+@CrossOrigin
 public class TestMqController {
 
-    @Resource
-    private RabbitTemplate rabbitTemplate;
-
-
-    @GetMapping("/test")
-    public JSONObject testObject(){
+    @GetMapping("/get")
+    public JSONObject sendMessage(){;
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", 200);
+        jsonObject.put("nickName", "张三");
         return jsonObject;
     }
 
-    @GetMapping("/sendMessage")
-    public JSONObject sendMessage(){
-        SendSmsModel sendSmsModel = new SendSmsModel();
-        sendSmsModel.setPhone("13333333333");
-        sendSmsModel.setContent("[圭峰网络]你的登录验证码为: 666666");
-        rabbitTemplate.convertAndSend(Produce.queue_send_sms, sendSmsModel);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("code", 200);
-        return jsonObject;
+    @PostMapping("/post/body")
+    public JSONObject postBody(@RequestBody JSONObject jsonObject){
+        JSONObject result = new JSONObject();
+        result.put("code", 200);
+        result.put("message", "request success.");
+        result.put("data", jsonObject);
+        return result;
     }
-
 }

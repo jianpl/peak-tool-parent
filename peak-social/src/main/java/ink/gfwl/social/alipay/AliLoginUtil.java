@@ -8,10 +8,11 @@ import com.alipay.api.request.AlipaySystemOauthTokenRequest;
 import com.alipay.api.request.AlipayUserInfoShareRequest;
 import com.alipay.api.response.AlipaySystemOauthTokenResponse;
 import com.alipay.api.response.AlipayUserInfoShareResponse;
-import ink.gfwl.social.exception.SocialException;
+import ink.gfwl.common.properties.social.AliLoginProperties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
-import org.springframework.beans.factory.annotation.Value;
+import ink.gfwl.social.exception.SocialException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,14 +24,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AliLoginUtil {
 
-    @Value("${peak.social.ali.getWay}")
-    private String getWay;
-    @Value("${peak.social.ali.appId}")
-    private String appId;
-    @Value("${peak.social.ali.privateKey}")
-    private String privateKey;
-    @Value("${peak.social.ali.publicKey}")
-    private String publicKey;
+    @Autowired(required = false)
+    private AliLoginProperties aliLoginProperties;
 
     /**
      * 支付宝登录
@@ -46,8 +41,14 @@ public class AliLoginUtil {
         }
     }
 
-    private AlipayUserInfoShareResponse loginByCode(String authCode) throws AlipayApiException {
-        AlipayClient alipayClient = new DefaultAlipayClient(getWay,appId,privateKey,"json","UTF-8",publicKey,"RSA2");
+    /**
+     * 支付宝登录
+     * @param authCode 登录code
+     * @return 结果
+     * @throws AlipayApiException see {@link AlipayApiException}
+     */
+    public AlipayUserInfoShareResponse loginByCode(String authCode) throws AlipayApiException {
+        AlipayClient alipayClient = new DefaultAlipayClient(aliLoginProperties.getGetWay(),aliLoginProperties.getAppId(),aliLoginProperties.getPrivateKey(),"json","UTF-8",aliLoginProperties.getPublicKey(),"RSA2");
         AlipaySystemOauthTokenRequest request = new AlipaySystemOauthTokenRequest();
         request.setCode(authCode);
         request.setGrantType("authorization_code");

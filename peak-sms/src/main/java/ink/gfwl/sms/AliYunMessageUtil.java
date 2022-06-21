@@ -12,10 +12,10 @@ import com.aliyuncs.profile.DefaultProfile;
 import ink.gfwl.common.math.Affirm;
 import ink.gfwl.common.properties.sms.AliSmsProperties;
 import ink.gfwl.sms.base.Messages;
+import ink.gfwl.sms.exception.SmsException;
 import ink.gfwl.sms.model.AliYunSendRequest;
 import ink.gfwl.sms.model.MessageSendRequest;
-import ink.gfwl.sms.exception.SmsException;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
@@ -27,7 +27,7 @@ import javax.annotation.Resource;
  * <p>url: https://github.com/jianpl/peak-tool-parent</p>
  * <a href='https://help.aliyun.com/document_detail/71160.html'>阿里云接口文档</a>
  */
-@Service
+@Component
 public class AliYunMessageUtil implements Messages {
 
     @Resource

@@ -1,0 +1,8 @@
+${AnsiColor.GREEN} ,------.  ,------.   ,---.   ,--. ,--.
+${AnsiColor.GREEN} |  .--. ' |  .---'  /  O  \  |  .'   /
+${AnsiColor.GREEN} |  '--' | |  `--,  |  .-.  | |  .   '
+${AnsiColor.GREEN} |  | --'  |  `---. |  | |  | |  |\   \
+${AnsiColor.GREEN} `--'      `------' `--' `--' `--' '--'
+                        ${AnsiStyle.ITALIC}${AnsiColor.BLUE} Design by Gfwl.
+                ${AnsiColor.BLUE} https://www.gfwlest.com
+${AnsiColor.BLACK}

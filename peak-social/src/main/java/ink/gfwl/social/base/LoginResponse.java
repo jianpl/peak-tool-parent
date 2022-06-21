@@ -15,18 +15,17 @@ public class LoginResponse {
     private String uniqId;
 
     /**
-     * 平台公共ID
+     * 平台公共ID(微信登录存在)
      */
     private String unionId;
 
     /**
-     * 解析结果
+     * 解析结果(登录的结果)
      */
     private String result;
 
-
     /**
-     * 第三方登录TOKEN
+     * 第三方登录TOKEN(如微信会返回access_token)
      */
     private String token;
 
