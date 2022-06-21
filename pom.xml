@@ -40,7 +40,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <sms.aliyun.version>1.0.13</sms.aliyun.version>
-        <fast.json.version>1.2.79</fast.json.version>
+        <fast.json.version>1.2.83</fast.json.version>
         <aliyun.version>4.4.6</aliyun.version>
         <tencentcloud.version>4.0.11</tencentcloud.version>
         <alipay.version>4.10.192.ALL</alipay.version>
