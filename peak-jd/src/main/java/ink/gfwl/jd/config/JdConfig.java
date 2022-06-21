@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author jianpòlan
  * @version 1.0
  **/
-
 @ConfigurationProperties(
         prefix = "peak.jd",
         ignoreInvalidFields = true

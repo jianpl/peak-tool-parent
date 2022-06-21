@@ -5,7 +5,6 @@ import ink.gfwl.jd.JdApplication;
 import ink.gfwl.jd.common.ProductStyleExts;
 import ink.gfwl.jd.model.address.AddressModel;
 import ink.gfwl.jd.model.product.ProductModel;
-import ink.gfwl.jd.model.product.result.ProductNumberResult;
 import ink.gfwl.jd.model.token.TokenModel;
 import ink.gfwl.jd.service.AddressService;
 import ink.gfwl.jd.service.ProductService;
