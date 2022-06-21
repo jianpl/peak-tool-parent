@@ -1,55 +1,20 @@
+server:
+  port: 2000
+
 # 工具参数配置
 peak:
-  sms:  # 短信
-    # 阿里云
-    ali:
-      regionId: 地区
-      accessKeyId: accessKeyId
-      accessKeySecret: accessKeySecret
-      signName: 签名
-    # 腾讯云
-    tencent:
-      secretId: secretId
-      secretKey: secretKey
-      sdkAppId: appId
-      signName: 签名
-    # 助通
-    zthy:
-      username: 用户名
-      password: 接口密码
-  # 社交登录
-  social:
-    # 支付宝
-    ali:
-      getWay: getWay
-      appId: appId
-      privateKey: privateKey
-      publicKey:  publicKey
-    # 微信小程序、APP登录
-    wx:
-      wxAppId: wxAppId
-      wxAppSecret: wxAppSecret
-    # 微信web扫码
-    wxWeb:
-      wxWebAppId: wxWebAppId
-      wxWebAppSecret: wxWebAppSecret
-    # github
-    github:
-      clientId: clientId
-      clientSecret: clientSecret
-      callback: callback
-  # 对象存储
-  oss:
-    # 阿里云OSS
-    ali:
-      endPoint: endPoint
-      accessKeyId: accessKeyId
-      accessKeySecret: accessKeySecret
-    # 腾讯云COS
-    tencent:
-      accessKey: accessKey
-      secretKey: secretKey
-      bucketName: bucketName
-      appId: appId
-      regionId: regionId
-      tempFilePath: tempFilePath
+  express:
+    jd:
+      app-key:
+      app-secret:
+      rsa-secret-id:
+      rsa-public-key:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 12345678
+
+logging:
+  level:
+    ink.gfwl: debug
+    org.springframework.web: debug

@@ -14,14 +14,12 @@
     <groupId>ink.gfwl</groupId>
     <artifactId>peak-tool-parent</artifactId>
     <version>1.0.0</version>
+
     <modules>
-        <module>peak-sms</module>
         <module>peak-common</module>
-        <module>peak-pay</module>
-        <module>peak-social</module>
-        <module>peak-oss</module>
-        <module>peak-sample</module>
+        <module>peak-jd</module>
     </modules>
+
     <packaging>pom</packaging>
 
 
@@ -229,18 +227,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
