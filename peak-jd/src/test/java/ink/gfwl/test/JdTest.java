@@ -2,9 +2,12 @@ package ink.gfwl.test;
 
 import com.alibaba.fastjson.JSONObject;
 import ink.gfwl.jd.JdApplication;
-import ink.gfwl.jd.common.ProductStyleExts;
+import ink.gfwl.jd.common.ProductExts;
 import ink.gfwl.jd.model.address.AddressModel;
 import ink.gfwl.jd.model.product.ProductModel;
+import ink.gfwl.jd.model.product.result.ProductCategoryResult;
+import ink.gfwl.jd.model.product.result.ProductMatterResult;
+import ink.gfwl.jd.model.product.result.ProductNumberResult;
 import ink.gfwl.jd.model.token.TokenModel;
 import ink.gfwl.jd.service.AddressService;
 import ink.gfwl.jd.service.ProductService;
@@ -60,16 +63,24 @@ public class JdTest {
 //                System.out.println("--------");
 //            }
 //        }
-//        List<ProductExts> arr = new ArrayList<>();
-//        arr.add(ProductExts.nappintroduction);
-//        arr.add(ProductExts.nintroduction);
-//        arr.add(ProductExts.wxintroduction);
-//        ProductMatterModel productMatterModel = productService.queryProductDetail("102215", arr);
-        List<ProductStyleExts> styleExts = new ArrayList<>();
+        List<ProductExts> arr = new ArrayList<>();
+        arr.add(ProductExts.nappintroduction);
+        arr.add(ProductExts.nintroduction);
+        arr.add(ProductExts.wxintroduction);
+        ProductModel<ProductMatterResult> productMatterModel = productService.queryProductDetail("102215", arr);
+        System.out.println(JSONObject.toJSONString(productMatterModel));
+        // 6196;6198;11981
+        ProductModel<ProductCategoryResult> c_6196 = productService.queryProductCategory("6196");
+        ProductModel<ProductCategoryResult> c_6198 = productService.queryProductCategory("6198");
+        ProductModel<ProductCategoryResult> c_11981 = productService.queryProductCategory("11981");
+        System.out.println(JSONObject.toJSONString(c_6196.getResult()));
+        System.out.println(JSONObject.toJSONString(c_6198.getResult()));
+        System.out.println(JSONObject.toJSONString(c_11981.getResult()));
+//        List<ProductStyleExts> styleExts = new ArrayList<>();
 //        styleExts.add(ProductStyleExts.appStyleContent);
-        styleExts.add(ProductStyleExts.appStyleUrl);
+//        styleExts.add(ProductStyleExts.appStyleUrl);
 //        styleExts.add(ProductStyleExts.pcStyleContent);
-        styleExts.add(ProductStyleExts.pcStyleUrl);
+//        styleExts.add(ProductStyleExts.pcStyleUrl);
 //        ProductMatterStyleModel productMatterStyleModel = productService.queryProductDetailStyle("102215", styleExts);
 //        System.out.println(JSONObject.toJSONString(productMatterStyleModel));
     }

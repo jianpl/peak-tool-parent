@@ -10,6 +10,7 @@ import java.math.BigDecimal;
  **/
 public class ProductPriceResult implements Serializable {
 
+    private static final long serialVersionUID = -2155993977178094662L;
     /**
      * skuId
      */

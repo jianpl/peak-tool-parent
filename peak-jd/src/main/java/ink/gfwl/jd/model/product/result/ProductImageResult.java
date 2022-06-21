@@ -9,6 +9,7 @@ import java.io.Serializable;
  **/
 public class ProductImageResult implements Serializable {
 
+    private static final long serialVersionUID = 1520036195136236999L;
     /**
      * 编号
      */

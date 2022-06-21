@@ -9,6 +9,7 @@ import java.io.Serializable;
  **/
 public class ProductStateResult implements Serializable {
 
+    private static final long serialVersionUID = -2607891817489448053L;
     /**
      * skuId
      */

@@ -9,6 +9,7 @@ import ink.gfwl.jd.base.BaseModel;
  **/
 public class ProductModel<T> extends BaseModel {
 
+    private static final long serialVersionUID = 3807875064352246945L;
     private T result;
 
     /**

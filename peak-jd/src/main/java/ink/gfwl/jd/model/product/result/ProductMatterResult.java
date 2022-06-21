@@ -11,6 +11,7 @@ import java.io.Serializable;
  **/
 public class ProductMatterResult extends ProductExtsProperties implements Serializable {
 
+    private static final long serialVersionUID = -3489187861926232166L;
     /**
      * 售卖单位（N）
      */

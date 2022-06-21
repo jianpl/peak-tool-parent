@@ -7,6 +7,7 @@ import ink.gfwl.jd.config.RequestURL;
 import ink.gfwl.jd.model.address.AddressCastModel;
 import ink.gfwl.jd.model.address.AddressCheckModel;
 import ink.gfwl.jd.model.address.AddressModel;
+import ink.gfwl.jd.model.address.result.AddressCastResult;
 import ink.gfwl.jd.util.HttpUtil;
 import org.springframework.stereotype.Service;
 
@@ -88,4 +89,21 @@ public class AddressService extends RequestURL {
         return JSONObject.toJavaObject(JSON.parseObject(rs), AddressCastModel.class);
     }
 
+    /**
+     * 验证地址是否能用
+     * @param address 地址
+     * @return 结果:true正确，false错误
+     */
+    public boolean simpleAddressCheck(String address){
+        AddressCastModel addressCastModel = addressCastJdAddress(address);
+        if("0000".equals(addressCastModel.getResultCode())){
+            AddressCastResult result = addressCastModel.getResult();
+            AddressCheckModel addressCheckModel = checkAddress(result.getProvinceId(),
+                    result.getCityId(),
+                    result.getCountyId(),
+                    result.getTownId() == null ? 0 : result.getTownId());
+            return addressCheckModel.getResult().isSuccess();
+        }
+        return false;
+    }
 }

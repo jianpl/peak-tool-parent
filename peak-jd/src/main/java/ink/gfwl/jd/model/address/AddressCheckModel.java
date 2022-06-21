@@ -1,6 +1,7 @@
 package ink.gfwl.jd.model.address;
 
 
+import ink.gfwl.jd.base.BaseModel;
 import ink.gfwl.jd.model.address.result.AddressCheckResult;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * @author jianpòlan
  * @version 1.0
  **/
-public class AddressCheckModel implements Serializable {
+public class AddressCheckModel extends BaseModel implements Serializable {
 
     private AddressCheckResult result;
 

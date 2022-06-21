@@ -1,14 +1,16 @@
 package ink.gfwl.jd.service;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import ink.gfwl.jd.base.BaseQueryParam;
 import ink.gfwl.jd.common.ProductCheckExts;
 import ink.gfwl.jd.common.ProductExts;
 import ink.gfwl.jd.common.ProductPriceExts;
 import ink.gfwl.jd.common.ProductStyleExts;
 import ink.gfwl.jd.config.RequestURL;
+import ink.gfwl.jd.model.order.params.OrderPrepareCheckParam;
 import ink.gfwl.jd.model.product.ProductModel;
+import ink.gfwl.jd.model.product.params.ProductCostParam;
 import ink.gfwl.jd.model.product.result.*;
 import ink.gfwl.jd.util.HttpUtil;
 import ink.gfwl.jd.util.StrUtils;
@@ -24,7 +26,7 @@ import java.util.Map;
  * @version 1.0
  **/
 @Service
-@SuppressWarnings("unchecked")
+@SuppressWarnings("unused")
 public class ProductService extends RequestURL {
 
     @Resource
@@ -37,7 +39,7 @@ public class ProductService extends RequestURL {
     public ProductModel<List<ProductNumberResult>> queryProductNumber(){
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
         String rs = HttpUtil.httpPost(URL_PRODUCT_NUM, params);
-        return JSONObject.toJavaObject(JSON.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<List<ProductNumberResult>>>(){});
     }
 
     /**
@@ -45,6 +47,7 @@ public class ProductService extends RequestURL {
      * @param pageNum 商品池编码
      * @param pageSize 每页大小，默认20，最大1000。建议 50 ~200
      * @param offset 偏移量，池id的首次查询传0，相同池id的后续请求赋值为上一次查询返回的偏移量
+     * @return 数据
      */
     public ProductModel<ProductSkuPageResult> queryProductGoods(Integer pageNum, Integer pageSize, long offset){
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
@@ -52,7 +55,7 @@ public class ProductService extends RequestURL {
         params.put("pageSize", pageSize);
         params.put("offset", offset);
         String rs = HttpUtil.httpPost(URL_PRODUCT_SKU_PAGE, params);
-        return JSONObject.toJavaObject(JSON.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductSkuPageResult>>(){});
     }
 
     /**
@@ -77,7 +80,7 @@ public class ProductService extends RequestURL {
             params.put("queryExts", StrUtils.enumArrConvertStr(productExts));
         }
         String rs = HttpUtil.httpPost(URL_PRODUCT_DETAIL, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductMatterResult>>(){});
     }
 
     /**
@@ -102,7 +105,7 @@ public class ProductService extends RequestURL {
             params.put("queryExts", StrUtils.enumArrConvertStr(styleExts));
         }
         String rs = HttpUtil.httpPost(URL_PRODUCT_DETAIL_STYLE, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductMatterStyleResult>>(){});
     }
 
     /**
@@ -110,11 +113,12 @@ public class ProductService extends RequestURL {
      * @param sku 商品sku
      * @return 商品图片
      */
-    public ProductModel<ProductImageResult> queryProductImage(String sku){
+    public ProductModel<Map<Long, List<ProductImageResult>>> queryProductImage(String sku){
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
         params.put("sku", sku);
         String rs = HttpUtil.httpPost(URL_PRODUCT_IMAGE, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        System.out.println(rs);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<Map<Long, List<ProductImageResult>>>>(){});
     }
 
     /**
@@ -126,7 +130,7 @@ public class ProductService extends RequestURL {
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
         params.put("sku", sku);
         String rs = HttpUtil.httpPost(URL_PRODUCT_IMAGE, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductStateResult>>(){});
     }
 
     /**
@@ -142,7 +146,7 @@ public class ProductService extends RequestURL {
             params.put("queryExts", StrUtils.enumArrConvertStr(queryExts));
         }
         String rs = HttpUtil.httpPost(URL_PRODUCT_CHECK, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductCheckResult>>(){});
     }
 
     /**
@@ -162,7 +166,7 @@ public class ProductService extends RequestURL {
         params.put("county", county);
         params.put("town", town);
         String rs = HttpUtil.httpPost(URL_PRODUCT_AREA_LIMIT, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductAreaLimitResult>>(){});
     }
 
     /**
@@ -174,7 +178,8 @@ public class ProductService extends RequestURL {
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
         params.put("cid", cid);
         String rs = HttpUtil.httpPost(URL_PRODUCT_CATEGORY, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductCategoryResult>>(){});
+
     }
 
     /**
@@ -183,14 +188,15 @@ public class ProductService extends RequestURL {
      * @param queryExts 扩展查询
      * @return 结果
      */
-    public ProductModel<ProductPriceResult> queryProductPrice(String sku, List<ProductPriceExts> queryExts){
+    public ProductModel<List<ProductPriceResult>> queryProductPrice(String sku, List<ProductPriceExts> queryExts){
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
         params.put("sku", sku);
         if(queryExts != null){
             params.put("queryExts", StrUtils.enumArrConvertStr(queryExts));
         }
         String rs = HttpUtil.httpPost(URL_PRODUCT_SELL_PRICE, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        System.out.println(rs);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<List<ProductPriceResult>>>(){});
     }
 
     /**
@@ -200,12 +206,12 @@ public class ProductService extends RequestURL {
      * @param area 格式：13_1000_4277_0 (分别代表1、2、3、4级地址)
      * @return 结果
      */
-    public ProductModel<ProductStockResult> queryProductStock(String skuNums, String area){
+    public ProductModel<ProductStockResult> queryProductStock(List<OrderPrepareCheckParam> skuNums, ProductCostParam area){
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
-        params.put("skuNums", skuNums);
-        params.put("area", area);
+        params.put("skuNums", JSONObject.toJSONString(skuNums));
+        params.put("area", area.getArea());
         String rs = HttpUtil.httpPost(URL_PRODUCT_STOCK, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductStockResult>>(){});
     }
 
     /**
@@ -218,7 +224,7 @@ public class ProductService extends RequestURL {
      * @param paymentType 京东支付方式
      * @return 价格
      */
-    public ProductModel<ProductFreightResult> queryProductFreight(String sku, int province, int city, int county, int town, int paymentType){
+    public ProductModel<ProductFreightResult> queryProductFreight(List<OrderPrepareCheckParam> sku, int province, int city, int county, int town, int paymentType){
         return queryProductFreight(sku, province, city, county, town, paymentType, false);
     }
 
@@ -233,9 +239,9 @@ public class ProductService extends RequestURL {
      * @param conFreight 是否查询续重运费
      * @return 价格
      */
-    public ProductModel<ProductFreightResult> queryProductFreight(String sku, int province, int city, int county, int town, int paymentType, boolean conFreight){
+    public ProductModel<ProductFreightResult> queryProductFreight(List<OrderPrepareCheckParam> sku, int province, int city, int county, int town, int paymentType, boolean conFreight){
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
-        params.put("sku", sku);
+        params.put("sku", JSONObject.toJSONString(sku));
         params.put("province", province);
         params.put("city", city);
         params.put("county", county);
@@ -245,8 +251,9 @@ public class ProductService extends RequestURL {
             params.put("queryExts", "conFreight");
         }
         String rs = HttpUtil.httpPost(URL_PRODUCT_FREIGHT, params);
-        return JSONObject.toJavaObject(JSONObject.parseObject(rs), ProductModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<ProductModel<ProductFreightResult>>(){});
     }
+
 
 
 

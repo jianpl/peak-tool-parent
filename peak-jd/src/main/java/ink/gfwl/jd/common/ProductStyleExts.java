@@ -6,8 +6,8 @@ package ink.gfwl.jd.common;
  * 响较小，但是目前托管在CDN。)</p>
  * <p>注意</p>
  * <p>1.当查询商品详情接口中大字段introduction返回包含div的这情况，老的样式表无法正常显示，这个时候需要调用该接口查询装吧样式表</p>
- * <p>2.introduction中包含<div skudesign="100010">就查PC端样式</p>
- * <p>3.introduction中包含<div skudesign="100011">就查APP端样式</p>
+ * <p>2.introduction中包含{@code <div skudesign="100010">}就查PC端样式</p>
+ * <p>3.introduction中包含{@code <div skudesign="100011">}就查APP端样式</p>
  * @author jianpòlan
  * @version 1.0
  **/
