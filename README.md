@@ -43,7 +43,7 @@
 >
 > @EnablePay
 >
-> @EnableSms
+> @EnableCaptcha
 >
 > @EnableSocial
 

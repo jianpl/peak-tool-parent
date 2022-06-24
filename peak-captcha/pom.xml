@@ -54,8 +54,8 @@
         </dependency>
     </dependencies>
 
-    <description>Peak java Tool form sms.</description>
-    <url>https://github.com/jianpl/peak-tool-parent/peak-sms</url>
+    <description>Peak java Tool form captcha.</description>
+    <url>https://github.com/jianpl/peak-tool-parent/peak-captcha</url>
 
     <licenses>
         <license>

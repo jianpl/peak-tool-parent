@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * enable sms config
+ * enable captcha config
  * @author jianpòlan
  * @version 1.0
  **/

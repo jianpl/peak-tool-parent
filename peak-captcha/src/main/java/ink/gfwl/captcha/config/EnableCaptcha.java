@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * enable sms
+ * enable captcha
  * @author jianpòlan
  * @version 1.0
  **/
