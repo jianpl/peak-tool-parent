@@ -1,6 +1,6 @@
 # 工具参数配置
 peak:
-  sms:  # 短信
+  captcha:  # 短信
     # 阿里云
     ali:
       regionId: 地区
@@ -53,3 +53,10 @@ peak:
       appId: appId
       regionId: regionId
       tempFilePath: tempFilePath
+  pay:
+    # 支付宝支付
+    ali:
+      appId: appId
+      pubicKey: pubicKey
+      privateKey: privateKey
+      getWay: getWay

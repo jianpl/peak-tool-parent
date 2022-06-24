@@ -7,7 +7,7 @@ import com.qcloud.cos.exception.CosClientException;
 import com.qcloud.cos.exception.CosServiceException;
 import com.qcloud.cos.model.*;
 import com.qcloud.cos.region.Region;
-import ink.gfwl.common.properties.oss.TencentCosProperties;
+import ink.gfwl.oss.properties.TencentCosProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

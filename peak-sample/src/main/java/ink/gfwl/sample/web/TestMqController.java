@@ -1,7 +1,16 @@
 package ink.gfwl.sample.web;
 
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.web.bind.annotation.*;
+import ink.gfwl.captcha.GraphCaptchaUtil;
+import ink.gfwl.captcha.model.GraphResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * TODO
@@ -14,20 +23,14 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class TestMqController {
 
-    @GetMapping("/get")
-    public JSONObject sendMessage(){;
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("code", 200);
-        jsonObject.put("nickName", "张三");
-        return jsonObject;
-    }
+    @Resource
+    private GraphCaptchaUtil graphCaptchaUtil;
 
-    @PostMapping("/post/body")
-    public JSONObject postBody(@RequestBody JSONObject jsonObject){
-        JSONObject result = new JSONObject();
-        result.put("code", 200);
-        result.put("message", "request success.");
-        result.put("data", jsonObject);
-        return result;
+
+    @GetMapping("/captcha")
+    public void captcha(HttpServletResponse response) throws IOException {
+        GraphResult graphImage = graphCaptchaUtil.getGraphImage();
+        System.out.println(graphImage.getCode());
+        ImageIO.write(graphImage.getImage(), "png", response.getOutputStream());
     }
 }

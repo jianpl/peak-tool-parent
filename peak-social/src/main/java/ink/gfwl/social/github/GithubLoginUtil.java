@@ -1,7 +1,7 @@
 package ink.gfwl.social.github;
 
 import ink.gfwl.common.http.RestTemplateUtil;
-import ink.gfwl.common.properties.social.GithubProperties;
+import ink.gfwl.social.properties.GithubProperties;
 import ink.gfwl.social.base.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

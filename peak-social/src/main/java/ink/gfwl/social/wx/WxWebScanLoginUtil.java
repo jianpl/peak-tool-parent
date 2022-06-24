@@ -2,8 +2,8 @@ package ink.gfwl.social.wx;
 
 import com.alibaba.fastjson.JSONObject;
 import ink.gfwl.common.http.RestTemplateUtil;
-import ink.gfwl.common.math.Affirm;
-import ink.gfwl.common.properties.social.WxWebProperties;
+import ink.gfwl.common.lang.Affirm;
+import ink.gfwl.social.properties.WxWebProperties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
 import ink.gfwl.social.exception.SocialException;

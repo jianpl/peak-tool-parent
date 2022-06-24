@@ -1,8 +1,7 @@
 package ink.gfwl.common.security;
 
 /**
- * TODO
- *
+ * 看hutool吧，不想撸了
  * @author jianpòlan
  * @version 1.0
  **/

@@ -18,17 +18,15 @@
         <!-- 公共模块 -->
         <module>peak-common</module>
         <!-- 短信模块 -->
-        <module>peak-sms</module>
+        <module>peak-captcha</module>
         <!-- 支付模块 -->
         <module>peak-pay</module>
         <!-- 社交模块 -->
         <module>peak-social</module>
         <!-- 存储模块 -->
         <module>peak-oss</module>
-        <!-- 京东模块-非开源工具 -->
-<!--        <module>peak-jd</module>-->
-        <!-- 京东模块-非开源工具 -->
-        <module>peak-util</module>
+        <!-- 工具模块 -->
+<!--        <module>peak-util</module>-->
         <!-- 例子 -->
 <!--        <module>peak-sample</module>-->
     </modules>
@@ -44,12 +42,14 @@
         <aliyun.version>4.4.6</aliyun.version>
         <tencentcloud.version>4.0.11</tencentcloud.version>
         <alipay.version>4.10.192.ALL</alipay.version>
+        <xstream.version>1.4.10</xstream.version>
         <aliyun.oss.version>3.8.0</aliyun.oss.version>
         <qcloud-cos.version>5.6.70</qcloud-cos.version>
         <redisson.version>3.17.0</redisson.version>
         <redis.version>3.3.0</redis.version>
         <hutool.version>5.7.9</hutool.version>
         <peak.version>1.0.1</peak.version>
+        <httpclient.version>4.5.10</httpclient.version>
     </properties>
 
     <dependencyManagement>

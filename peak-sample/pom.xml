@@ -20,11 +20,17 @@
         <dependency>
             <groupId>ink.gfwl</groupId>
             <artifactId>peak-common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>ink.gfwl</groupId>
-            <artifactId>peak-sms</artifactId>
+            <artifactId>peak-captcha</artifactId>
             <version>${peak.version}</version>
         </dependency>
 
@@ -71,11 +77,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
-            <version>1.4.7.RELEASE</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

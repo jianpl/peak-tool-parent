@@ -9,32 +9,43 @@
 # JAVA 常用工具
 
 ## 使用说明
-> 直接在maven中引用
+> 直接在maven中引用，由于包中引用了第三方的sdk包，若出现冲突请更换版本
 > ```xml
 > <!-- oss -->
 > <dependency>
->   <groupId>ink.gfwl</groupId>
->   <artifactId>peak-oss</artifactId>
->   <version>${lastVersion}</version>
+> <groupId>ink.gfwl</groupId>
+> <artifactId>peak-oss</artifactId>
+> <version>${lastVersion}</version>
 > </dependency>
 > <!-- 支付 -->
 > <dependency>
->   <groupId>ink.gfwl</groupId>
->   <artifactId>peak-pay</artifactId>
->   <version>${lastVersion}</version>
+> <groupId>ink.gfwl</groupId>
+> <artifactId>peak-pay</artifactId>
+> <version>${lastVersion}</version>
 > </dependency>
-> <!-- 短信 -->
+> <!-- 验证码 -->
 > <dependency>
->   <groupId>ink.gfwl</groupId>
->   <artifactId>peak-sms</artifactId>
->   <version>${lastVersion}</version>
+> <groupId>ink.gfwl</groupId>
+> <artifactId>peak-captcha</artifactId>
+> <version>${lastVersion}</version>
 > </dependency>
 > <!-- 社交登录 -->
 > <dependency>
->   <groupId>ink.gfwl</groupId>
->   <artifactId>peak-social</artifactId>
->   <version>${lastVersion}</version>
+> <groupId>ink.gfwl</groupId>
+> <artifactId>peak-social</artifactId>
+> <version>${lastVersion}</version>
 > </dependency>
+> ```
+>
+> 启用方式：
+>
+> @EnableOss
+>
+> @EnablePay
+>
+> @EnableSms
+>
+> @EnableSocial
 
 
 ## 子包说明
@@ -45,7 +56,7 @@
 > 
 >> 腾讯云
 > 3. ink.gfwl.pay 支付
-> 4. ink.gfwl.sms 短信
+> 4. ink.gfwl.captcha 验证码
 >> 阿里云
 > 
 >> 腾讯云
@@ -81,7 +92,7 @@
 ## 版本号
 
 ### 1.0.1
-更新时间：撸代码中，部分已更新
+更新时间：撸代码中，部分已更新, ink.gfwl.sms 已更改为ink.gfwl.captcha
 
 更新：
 1. OSS 
@@ -91,7 +102,7 @@
     1.2 腾讯云对象存储
    
 2. 社交登录
-    
+   
     2.1 APP支付宝登录
 
     2.2 APP Apple登录
@@ -100,8 +111,8 @@
 
     2.4 微信小程序、APP微信登录、微信扫码登录(网页)
 
-3. 短信
-    
+3. 验证码
+   
     3.1 助通；支持国际短信
 
 4. 正在更新支付

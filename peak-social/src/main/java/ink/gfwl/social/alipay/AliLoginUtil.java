@@ -8,7 +8,7 @@ import com.alipay.api.request.AlipaySystemOauthTokenRequest;
 import com.alipay.api.request.AlipayUserInfoShareRequest;
 import com.alipay.api.response.AlipaySystemOauthTokenResponse;
 import com.alipay.api.response.AlipayUserInfoShareResponse;
-import ink.gfwl.common.properties.social.AliLoginProperties;
+import ink.gfwl.social.properties.AliLoginProperties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
 import ink.gfwl.social.exception.SocialException;
