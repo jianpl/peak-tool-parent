@@ -125,7 +125,7 @@ public class PayUtil {
         List<Element> list = root.getChildren();
         for (Element e : list) {
             String k = e.getName();
-            String v = "";
+            String v;
             List<Element> children = e.getChildren();
             if (children.isEmpty()) {
                 v = e.getTextNormalize();
@@ -202,8 +202,7 @@ public class PayUtil {
             InputStream is = request.getInputStream();
             InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
             BufferedReader br = new BufferedReader(isr);
-            String s = "";
-
+            String s;
             while ((s = br.readLine()) != null) {
                 sb.append(s);
             }
