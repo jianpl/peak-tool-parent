@@ -5,13 +5,15 @@ import java.util.Map;
 
 /**
  * Object工具类
+ *
  * @author jianpòlan
  * @version 1.0
- **/
+ */
 public class ObjectUtils {
 
     /**
      * 是否非空
+     *
      * @param object string、List
      * @return 非空为true
      */
@@ -35,6 +37,7 @@ public class ObjectUtils {
 
     /**
      * 是否非空
+     *
      * @param object string、List
      * @return 空为true
      */
@@ -42,10 +45,23 @@ public class ObjectUtils {
         return !isNotNull(object);
     }
 
+    /**
+     * <p>length.</p>
+     *
+     * @param cs a {@link java.lang.CharSequence} object.
+     * @return a int.
+     */
     public static int length(CharSequence cs) {
         return cs == null ? 0 : cs.length();
     }
 
+    /**
+     * <p>equals.</p>
+     *
+     * @param cs1 a {@link java.lang.CharSequence} object.
+     * @param cs2 a {@link java.lang.CharSequence} object.
+     * @return a boolean.
+     */
     public static boolean equals(CharSequence cs1, CharSequence cs2) {
         if (cs1 == cs2) {
             return true;
@@ -70,6 +86,12 @@ public class ObjectUtils {
         }
     }
 
+    /**
+     * <p>mapToXML.</p>
+     *
+     * @param param a {@link java.util.Map} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String mapToXML(Map<String, String> param) {
         StringBuffer sb = new StringBuffer();
         sb.append("<xml>");

@@ -2,6 +2,7 @@ package ink.gfwl.pay.wx;
 
 import ink.gfwl.common.lang.Affirm;
 import ink.gfwl.common.lang.ObjectUtils;
+import ink.gfwl.pay.apple.util.DefaultHostnameVerifier;
 import ink.gfwl.pay.base.CallbackParams;
 import ink.gfwl.pay.base.PaymentResponse;
 import ink.gfwl.pay.exception.PayException;
@@ -21,7 +22,6 @@ import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.net.www.protocol.https.DefaultHostnameVerifier;
 
 import javax.net.ssl.SSLContext;
 import javax.servlet.http.HttpServletRequest;
@@ -68,10 +68,11 @@ public class WxPayUtil {
     }
 
     /**
-     * 申请退款
+     * 申请退款<a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_4&index=6">微信文档</a>
      * @param wxRefundRequest 退款参数
      * @param instream 证书流
-     * 微信文档：https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_4&index=6
+     * @throws Exception ex
+     * @return String
      */
     public String refund(WxRefundRequest wxRefundRequest, InputStream instream) throws Exception {
         HashMap<String, String> param = new HashMap<>();

@@ -1,7 +1,5 @@
 package ink.gfwl.pay.apple.util;
 
-import sun.net.www.protocol.https.DefaultHostnameVerifier;
-
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;

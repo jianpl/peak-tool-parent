@@ -21,6 +21,7 @@ public class ApplePayUtil{
     /**
      * 支付处理
      * @param applePaymentRequest {@link ink.gfwl.pay.apple.model.ApplePaymentRequest}
+     * @return PaymentResponse
      */
     public PaymentResponse prepare(ApplePaymentRequest applePaymentRequest){
         Affirm.isNull(applePaymentRequest, ()->new PayException(100));

@@ -34,6 +34,7 @@ public class AppleLoginUtil {
     /**
      * 对前端传来的JWT字符串identityToken的第二部分进行解码
      * 主要获取其中的aud和sub，aud大概对应ios前端的包名，sub大概对应当前用户的授权的openID
+     * @param identityToken identityToken
      * @return  {"aud":"com.xkj.****","sub":"000***.8da764d3f9e34d2183e8da08a1057***.0***","c_hash":"UsKAuEoI-****","email_verified":"true","auth_time":1574673481,"iss":"https://appleid.apple.com","exp":1574674081,"iat":1574673481,"email":"****@qq.com"}
      */
     public JSONObject parserIdentityToken(String identityToken){

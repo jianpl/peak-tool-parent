@@ -11,5 +11,10 @@ import ink.gfwl.captcha.model.MessageSendRequest;
  */
 public interface Messages {
 
+    /**
+     * 发送短信
+     * @param messageSendRequest 参数
+     * @return 结果
+     */
     String sendMessage(MessageSendRequest messageSendRequest);
 }

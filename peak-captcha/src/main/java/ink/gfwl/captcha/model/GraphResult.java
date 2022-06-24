@@ -21,9 +21,17 @@ public class GraphResult implements Serializable {
      */
     private String code;
 
+    /**
+     * 无参构造
+     */
     public GraphResult() {
     }
 
+    /**
+     * 构造
+     * @param image 图片对象
+     * @param code 验证码
+     */
     public GraphResult(BufferedImage image, String code) {
         this.image = image;
         this.code = code;

@@ -8,20 +8,43 @@ package ink.gfwl.captcha.exception;
  **/
 public class SmsException extends RuntimeException{
 
-    private final Integer code ;
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 1795731493416896506L;
 
+    /**
+     * 错误码
+     */
+    private final Integer code;
+
+    /**
+     * 错误信息
+     */
     private final String message;
 
+    /**
+     * 构造
+     * @param code 错误码
+     * @param message 消息
+     */
     public SmsException(int code, String message){
         this.code = code;
         this.message = message;
     }
 
+    /**
+     * 错误消息
+     */
     @Override
     public String getMessage() {
         return message;
     }
 
+    /**
+     * 错误码
+     * @return code
+     */
     public Integer getCode() {
         return code;
     }

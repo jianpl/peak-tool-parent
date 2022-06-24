@@ -113,6 +113,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
                     <configuration>
                         <target>1.8</target>
                         <source>1.8</source>
@@ -161,6 +162,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <configuration>
+                        <javadocExecutable>/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/bin/javadoc</javadocExecutable>
+                    </configuration>
+                    <version>2.9.1</version>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>

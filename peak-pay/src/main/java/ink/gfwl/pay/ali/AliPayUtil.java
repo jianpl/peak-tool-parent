@@ -79,6 +79,8 @@ public class AliPayUtil {
     /**
      * 支付宝支付退款
      * @param refundRequest 退款参数
+     * @return AlipayTradeRefundResponse
+     * @throws AlipayApiException AlipayApiException
      */
     public AlipayTradeRefundResponse refund(RefundRequest refundRequest) throws AlipayApiException {
         AlipayClient alipayClient = getAlipayClient();

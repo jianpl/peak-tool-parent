@@ -4,13 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * IP工具
+ *
  * @author jianpòlan
  * @version 1.0
- **/
+ */
 public class IpAddressUtil {
 
     /**
      * 获取客户端IP地址
+     *
      * @param request 请求
      * @return IP地址
      */
