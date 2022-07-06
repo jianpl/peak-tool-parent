@@ -1,1 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=ink.gfwl.common.config.EnableAllToolsConfig

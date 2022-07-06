@@ -44,9 +44,9 @@ public class ProductStockResult implements Serializable {
      * 剩余数量。
      * 当此值为-1时，为未查询到。
      * StockStateDesc为33：
-     * 入参的skuNums字段，skuId对应的num<50，此字段为实际库存。
-     * 入参的skuNums字段，skuId对应的50<=num<100，此字段为-1。
-     * 入参的skuNums字段，skuId对应的num>100，此字段等于num。(此种情况并未返回真实京东库存)
+     * 入参的skuNums字段，skuId对应的num&gt;50，此字段为实际库存。
+     * 入参的skuNums字段，skuId对应的50&gt;=num&lt;100，此字段为-1。
+     * 入参的skuNums字段，skuId对应的num&gt;100，此字段等于num。(此种情况并未返回真实京东库存)
      */
     private Integer remainNum;
 

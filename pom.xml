@@ -16,7 +16,6 @@
     <version>1.0.1</version>
 
     <modules>
-        <module>peak-common</module>
         <module>peak-jd</module>
     </modules>
 

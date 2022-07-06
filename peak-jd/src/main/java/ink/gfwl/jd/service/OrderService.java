@@ -1,7 +1,7 @@
 package ink.gfwl.jd.service;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import ink.gfwl.jd.base.BaseQueryParam;
 import ink.gfwl.jd.config.RequestURL;
 import ink.gfwl.jd.model.order.OrderModel;
@@ -35,7 +35,7 @@ public class OrderService extends RequestURL {
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
         params.putAll(StrUtils.entityToMap(submitOrderParam));
         String rs = HttpUtil.httpPost(URL_ORDER_SUBMITORDER, params);
-        return JSONObject.toJavaObject(JSON.parseObject(rs), OrderModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<OrderModel<OrderSubmitResult>>(){});
     }
 
     /**
@@ -47,11 +47,6 @@ public class OrderService extends RequestURL {
         Map<String, Object> params = baseQueryParam.getBaseQueryParam();
         params.put("thirdOrder", thirdOrder);
         String rs = HttpUtil.httpPost(URL_ORDER_QUERY_BY_THIRD, params);
-        return JSONObject.toJavaObject(JSON.parseObject(rs), OrderModel.class);
+        return JSONObject.parseObject(rs, new TypeReference<OrderModel<String>>(){});
     }
-
-
-
-
-
 }

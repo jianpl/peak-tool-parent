@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=ink.gfwl.jd.config.EnableAllToolsConfig

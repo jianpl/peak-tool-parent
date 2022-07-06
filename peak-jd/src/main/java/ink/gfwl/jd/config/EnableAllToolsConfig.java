@@ -1,4 +1,4 @@
-package ink.gfwl.common.config;
+package ink.gfwl.jd.config;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  **/
 @Configuration
 @ComponentScan(value = {
-        "ink.gfwl"
+        "ink.gfwl.jd"
 })
-@EnableConfigurationProperties
+@EnableConfigurationProperties(value = {JdConfig.class})
 public class EnableAllToolsConfig { }
