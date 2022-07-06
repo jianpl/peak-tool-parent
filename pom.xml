@@ -11,7 +11,7 @@
     <modules>
         <!-- 公共模块 -->
         <module>peak-common</module>
-        <!-- 短信模块 -->
+        <!-- 验证码模块 -->
         <module>peak-captcha</module>
         <!-- 支付模块 -->
         <module>peak-pay</module>
@@ -24,7 +24,9 @@
     </modules>
 
     <packaging>pom</packaging>
-
+    <name>peak-tool-parent</name>
+    <description>peak tool parent.</description>
+    <url>https://github.com/jianpl/peak-tool-parent</url>
 
     <properties>
         <spring.boot.version>2.7.0</spring.boot.version>

@@ -3,7 +3,7 @@ package ink.gfwl.util.lang;
 import java.security.SecureRandom;
 
 /**
- * 随机字符串生成
+ * 随机字符串、数字、中文生成
  * @author jianpòlan
  * @version 1.0
  **/
@@ -11,7 +11,6 @@ public final class RandomUtils implements java.io.Serializable{
 
     private static final long serialVersionUID = 1L;
     private static final SecureRandom rand = new SecureRandom();
-
     private static final String num_str = "0123456789";
     /**
      * 获取指定位数随机数字

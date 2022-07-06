@@ -77,6 +77,10 @@
             </exclusions>
         </dependency>
         <dependency>
+            <artifactId>commons-codec</artifactId>
+            <groupId>commons-codec</groupId>
+        </dependency>
+        <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
         </dependency>
@@ -96,6 +100,7 @@
         </dependency>
     </dependencies>
 
+    <name>oss tool.</name>
     <description>Peak java Tool form oss.</description>
     <url>https://github.com/jianpl/peak-tool-parent/peak-oss</url>
 

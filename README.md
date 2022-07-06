@@ -121,3 +121,5 @@
 更新时间：2022-03-21
 
 更新短信相关接口
+
+mvn clean deploy -Dgpg.passphrase=jianpolan
