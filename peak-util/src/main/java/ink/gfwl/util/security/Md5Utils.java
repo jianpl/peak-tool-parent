@@ -1,14 +1,14 @@
-package ink.gfwl.common.lang;
+package ink.gfwl.util.security;
 
 import java.security.MessageDigest;
 
 /**
- * TODO
- *
+ * MD5加密
  * @author jianpòlan
  * @version 1.0
+ * @since 1.0.2
  */
-public class Md5Util {
+public final class Md5Utils {
 
     private static final char[] hexDigest = new char[]{'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
 
@@ -24,7 +24,6 @@ public class Md5Util {
 
     /**
      * MD5
-     *
      * @param str 待加密
      * @param upper 大写
      * @return 结果

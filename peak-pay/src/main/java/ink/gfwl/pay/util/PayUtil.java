@@ -2,10 +2,10 @@ package ink.gfwl.pay.util;
 
 
 import com.alibaba.fastjson.JSONObject;
-import ink.gfwl.common.lang.Md5Util;
 import ink.gfwl.common.lang.ObjectUtils;
 import ink.gfwl.pay.base.CallbackParams;
 import ink.gfwl.pay.exception.PayException;
+import ink.gfwl.util.security.Md5Utils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -274,7 +274,7 @@ public class PayUtil {
             }
         }
         sb.append("key=").append(apiKey);
-        return Md5Util.md5(sb.toString(), true);
+        return Md5Utils.md5(sb.toString(), true);
     }
 
     public static String httpsRequest(String requestUrl, String outputStr) {

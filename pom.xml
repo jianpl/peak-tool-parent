@@ -13,7 +13,7 @@
 
     <groupId>ink.gfwl</groupId>
     <artifactId>peak-tool-parent</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <modules>
         <!-- 公共模块 -->
         <module>peak-common</module>
@@ -26,7 +26,7 @@
         <!-- 存储模块 -->
         <module>peak-oss</module>
         <!-- 工具模块 -->
-<!--        <module>peak-util</module>-->
+        <module>peak-util</module>
         <!-- 例子 -->
 <!--        <module>peak-sample</module>-->
     </modules>
@@ -35,6 +35,7 @@
 
 
     <properties>
+        <peak.version>1.0.2</peak.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <sms.aliyun.version>1.0.13</sms.aliyun.version>
@@ -48,7 +49,6 @@
         <redisson.version>3.17.0</redisson.version>
         <redis.version>3.3.0</redis.version>
         <hutool.version>5.7.9</hutool.version>
-        <peak.version>1.0.1</peak.version>
         <httpclient.version>4.5.13</httpclient.version>
     </properties>
 
@@ -58,7 +58,13 @@
             <dependency>
                 <groupId>ink.gfwl</groupId>
                 <artifactId>peak-common</artifactId>
-                <version>${project.version}</version>
+                <version>${peak.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ink.gfwl</groupId>
+                <artifactId>peak-util</artifactId>
+                <version>${peak.version}</version>
             </dependency>
 
             <dependency>

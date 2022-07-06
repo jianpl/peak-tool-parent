@@ -2,15 +2,15 @@ package ink.gfwl.captcha;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import ink.gfwl.common.http.RestTemplateUtil;
-import ink.gfwl.common.lang.Affirm;
-import ink.gfwl.common.lang.Md5Util;
-import ink.gfwl.captcha.properties.ZthySmsProperties;
 import ink.gfwl.captcha.base.Messages;
 import ink.gfwl.captcha.exception.SmsException;
 import ink.gfwl.captcha.model.MessageSendRequest;
 import ink.gfwl.captcha.model.ZthyCustomMessageRequest;
 import ink.gfwl.captcha.model.ZthyMessageRequest;
+import ink.gfwl.captcha.properties.ZthySmsProperties;
+import ink.gfwl.common.http.RestTemplateUtil;
+import ink.gfwl.common.lang.Affirm;
+import ink.gfwl.util.security.Md5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,7 +57,7 @@ public class ZthyMessageUtil implements Messages {
         requestJson.put("username", zthySmsProperties.getUsername());
         long tKey = System.currentTimeMillis() / 1000;
         requestJson.put("tKey", tKey);
-        requestJson.put("password", Md5Util.md5(Md5Util.md5(zthySmsProperties.getPassword()) + tKey));
+        requestJson.put("password", Md5Utils.md5(Md5Utils.md5(zthySmsProperties.getPassword()) + tKey));
         requestJson.put("tpId", zthyMessageRequest.getTpId());
         requestJson.put("signature", zthyMessageRequest.getSignature());
         requestJson.put("ext", "");
@@ -83,7 +83,7 @@ public class ZthyMessageUtil implements Messages {
         //账号
         json.put("username", zthySmsProperties.getUsername());
         //密码
-        json.put("password", Md5Util.md5(Md5Util.md5(zthySmsProperties.getPassword()) + tKey));
+        json.put("password", Md5Utils.md5(Md5Utils.md5(zthySmsProperties.getPassword()) + tKey));
         //tKey
         json.put("tKey", tKey + "");
         //手机号

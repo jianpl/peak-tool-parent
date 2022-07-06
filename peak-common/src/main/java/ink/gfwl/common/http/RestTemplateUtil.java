@@ -77,7 +77,6 @@ public class RestTemplateUtil {
 
     /**
      * get请求
-     *
      * @param url 请求地址
      * @param responseType 返回类型
      * @param <T> 返回类型泛型
@@ -91,6 +90,24 @@ public class RestTemplateUtil {
         }
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
         return REST_TEMPLATE.exchange(url, HttpMethod.GET, httpEntity, responseType).getBody();
+    }
+
+    /**
+     * get请求
+     * @param <T> 返回类型泛型
+     * @param url 请求地址
+     * @param method 请求方法
+     * @param header a {@link java.util.Map} object.
+     * @param responseType 返回类型
+     * @return 结果
+     */
+    public static <T> T exchange(String url, HttpMethod method, Map<String, String> header, Class<T> responseType){
+        HttpHeaders headers = getDefaultHeader();
+        if(header != null){
+            header.forEach(headers::set);
+        }
+        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+        return REST_TEMPLATE.exchange(url, method, httpEntity, responseType).getBody();
     }
 
 }

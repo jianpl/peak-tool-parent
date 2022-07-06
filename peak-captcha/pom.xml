@@ -5,7 +5,7 @@
     <parent>
         <artifactId>peak-tool-parent</artifactId>
         <groupId>ink.gfwl</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>peak-captcha</artifactId>
@@ -31,6 +31,10 @@
             <artifactId>peak-common</artifactId>
         </dependency>
         <dependency>
+            <groupId>ink.gfwl</groupId>
+            <artifactId>peak-util</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
@@ -43,6 +47,11 @@
             <groupId>com.tencentcloudapi</groupId>
             <artifactId>tencentcloud-sdk-java</artifactId>
             <version>${tencentcloud.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>okhttp</artifactId>
+            <groupId>com.squareup.okhttp</groupId>
+            <version>2.7.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
