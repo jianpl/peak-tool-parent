@@ -57,7 +57,8 @@ public class ZthyMessageUtil implements Messages {
         requestJson.put("username", zthySmsProperties.getUsername());
         long tKey = System.currentTimeMillis() / 1000;
         requestJson.put("tKey", tKey);
-        requestJson.put("password", Md5Utils.md5(Md5Utils.md5(zthySmsProperties.getPassword()) + tKey));
+
+        requestJson.put("password", sign(zthySmsProperties.getPassword(), tKey));
         requestJson.put("tpId", zthyMessageRequest.getTpId());
         requestJson.put("signature", zthyMessageRequest.getSignature());
         requestJson.put("ext", "");
@@ -83,7 +84,7 @@ public class ZthyMessageUtil implements Messages {
         //账号
         json.put("username", zthySmsProperties.getUsername());
         //密码
-        json.put("password", Md5Utils.md5(Md5Utils.md5(zthySmsProperties.getPassword()) + tKey));
+        json.put("password", sign(zthySmsProperties.getPassword(), tKey));
         //tKey
         json.put("tKey", tKey + "");
         //手机号
@@ -91,5 +92,9 @@ public class ZthyMessageUtil implements Messages {
         //内容
         json.put("content", messageSendRequest.getContent());
         return RestTemplateUtil.postForBody(url, json, String.class);
+    }
+
+    private String sign(String password, long tKey){
+        return Md5Utils.md5(Md5Utils.md5(password) + tKey);
     }
 }
