@@ -1,7 +1,5 @@
 package ink.gfwl.pay.ali.model;
 
-import org.springframework.stereotype.Service;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -10,7 +8,6 @@ import java.math.BigDecimal;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
 public class AlipayRequest implements Serializable {
 
     private static final long serialVersionUID = 5667123453989717878L;

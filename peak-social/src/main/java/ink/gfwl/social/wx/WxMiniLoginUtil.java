@@ -3,24 +3,27 @@ package ink.gfwl.social.wx;
 import com.alibaba.fastjson.JSONObject;
 import ink.gfwl.common.http.RestTemplateUtil;
 import ink.gfwl.common.lang.ObjectUtils;
-import ink.gfwl.social.properties.WxMiniProperties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
 import ink.gfwl.social.exception.SocialException;
+import ink.gfwl.social.properties.WxMiniProperties;
 import ink.gfwl.social.wx.util.WXBizDataCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 微信小程序登录
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class WxMiniLoginUtil {
 
-    @Autowired(required = false)
-    private WxMiniProperties wxMiniProperties;
+    private final WxMiniProperties wxMiniProperties;
+
+    public WxMiniLoginUtil(WxMiniProperties wxMiniProperties) {
+        this.wxMiniProperties = wxMiniProperties;
+    }
+
     /**
      * 微信小程序登录
      * @param request 登录参数 {@link LoginRequest}

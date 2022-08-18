@@ -3,14 +3,13 @@ package ink.gfwl.social.wx;
 import com.alibaba.fastjson.JSONObject;
 import ink.gfwl.common.http.RestTemplateUtil;
 import ink.gfwl.common.lang.Affirm;
-import ink.gfwl.social.properties.WxH5Properties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
 import ink.gfwl.social.exception.SocialException;
+import ink.gfwl.social.properties.WxH5Properties;
 import ink.gfwl.social.wx.model.LangEnum;
 import ink.gfwl.social.wx.model.WxUserInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -21,14 +20,17 @@ import java.nio.charset.StandardCharsets;
  * @author jianpòlan
  * @version 1.0
  * <p>
- *     官方文档：https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
+ *     url：<a href="https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html">官方文档</a>
  * </p>
  **/
-@Service
+@Component
 public class WxH5LoginUtil {
 
-    @Autowired(required = false)
-    private WxH5Properties wxH5Properties;
+    private final WxH5Properties wxH5Properties;
+
+    public WxH5LoginUtil(WxH5Properties wxH5Properties) {
+        this.wxH5Properties = wxH5Properties;
+    }
 
     /**
      * 登录

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>peak-tool-parent</artifactId>
         <groupId>ink.gfwl</groupId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </parent>
     <artifactId>peak-util</artifactId>
     <name>peak-util</name>
@@ -47,7 +47,11 @@
             <artifactId>hutool-crypto</artifactId>
             <version>5.8.4</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.eweb4j</groupId>
+            <artifactId>fel</artifactId>
+            <version>0.8</version>
+        </dependency>
     </dependencies>
 
     <description>Peak java Tool form util.</description>

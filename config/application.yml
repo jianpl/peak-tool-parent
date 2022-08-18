@@ -53,6 +53,11 @@ peak:
       appId: appId
       regionId: regionId
       tempFilePath: tempFilePath
+    # minio
+    minio:
+      endpoint: https://
+      access-key: access
+      secret-key: secret
   pay:
     # 支付宝支付
     ali:

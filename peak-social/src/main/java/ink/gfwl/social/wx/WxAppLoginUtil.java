@@ -3,14 +3,13 @@ package ink.gfwl.social.wx;
 import com.alibaba.fastjson.JSONObject;
 import ink.gfwl.common.http.RestTemplateUtil;
 import ink.gfwl.common.lang.Affirm;
-import ink.gfwl.social.properties.WxAppProperties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
 import ink.gfwl.social.exception.SocialException;
+import ink.gfwl.social.properties.WxAppProperties;
 import ink.gfwl.social.wx.model.LangEnum;
 import ink.gfwl.social.wx.model.WxUserInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 
@@ -19,11 +18,14 @@ import java.nio.charset.StandardCharsets;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class WxAppLoginUtil {
 
-    @Autowired(required = false)
-    private WxAppProperties wxAppProperties;
+    private final WxAppProperties wxAppProperties;
+
+    public WxAppLoginUtil(WxAppProperties wxAppProperties) {
+        this.wxAppProperties = wxAppProperties;
+    }
 
     /**
      * 登录

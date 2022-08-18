@@ -18,7 +18,7 @@ public final class RandomUtils implements java.io.Serializable{
      * @return  参数说明 返回 resLength 位数随机数字
      */
     public static String getNum(int ...resLength){
-        if (resLength.length <= 0) {
+        if (resLength.length == 0) {
             resLength = new int[1];
             resLength[0] = 6;
         }
@@ -34,7 +34,7 @@ public final class RandomUtils implements java.io.Serializable{
      *  @return  参数说明 返回 resLength 位数随机数字
      */
     public static String getStr(int ...resLength){
-        if (resLength.length <= 0) {
+        if (resLength.length == 0) {
             resLength = new int[1];
             resLength[0] = 6;//默认值为6
         }
@@ -48,29 +48,27 @@ public final class RandomUtils implements java.io.Serializable{
 
     /**
      * 获取指定位数随机中文
-     *  @param resLength 随机数长度 可以不传
+     *  @param resLength 随机数长度 可以不传,默认为6
      *  @return  参数说明 返回 resLength 位数随机数字
      */
     public static String getZn_CH(int ...resLength){
-        if (resLength.length <= 0) {
+        if (resLength.length == 0) {
             resLength = new int[1];
-            resLength[0] = 6;//默认值为6
+            resLength[0] = 6;
         }
         StringBuilder ret=new StringBuilder();
         for(int i=0;i<resLength[0];i++){
             String str = null;
-            int hightPos, lowPos; // 定义高低位
-            hightPos = (176 + Math.abs(rand.nextInt(39))); //获取高位值
-            lowPos = (161 + Math.abs(rand.nextInt(93))); //获取低位值
+            int heightPos, lowPos; // 定义高低位
+            heightPos = (176 + Math.abs(rand.nextInt(39)));
+            lowPos = (161 + Math.abs(rand.nextInt(93)));
             byte[] b = new byte[2];
-            b[0] = (new Integer(hightPos).byteValue());
+            b[0] = (new Integer(heightPos).byteValue());
             b[1] = (new Integer(lowPos).byteValue());
-            try
-            {
-                str = new String(b, "GBK"); //转成中文
-            }
-            catch (java.io.UnsupportedEncodingException ex)
-            {
+            try{
+                //转成中文
+                str = new String(b, "GBK");
+            }catch (java.io.UnsupportedEncodingException ex){
                 ex.printStackTrace();
             }
             ret.append(str);

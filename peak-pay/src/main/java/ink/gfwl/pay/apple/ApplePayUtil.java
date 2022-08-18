@@ -7,15 +7,15 @@ import ink.gfwl.pay.apple.model.ApplePaymentRequest;
 import ink.gfwl.pay.apple.util.IosVerifyUtil;
 import ink.gfwl.pay.base.PaymentResponse;
 import ink.gfwl.pay.exception.PayException;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * Apple pay
  * @author jianpòlan
  * @version 1.0
- * <p>url: https://github.com/jianpl/peak-tool-parent/peak-pay</p>
+ * <p>url: <a href="https://github.com/jianpl/peak-tool-parent/peak-pay">github</a></p>
  **/
-@Service
+@Component
 public class ApplePayUtil{
 
     /**

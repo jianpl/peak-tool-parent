@@ -8,11 +8,10 @@ import com.alipay.api.request.AlipaySystemOauthTokenRequest;
 import com.alipay.api.request.AlipayUserInfoShareRequest;
 import com.alipay.api.response.AlipaySystemOauthTokenResponse;
 import com.alipay.api.response.AlipayUserInfoShareResponse;
-import ink.gfwl.social.properties.AliLoginProperties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
 import ink.gfwl.social.exception.SocialException;
-import org.springframework.beans.factory.annotation.Autowired;
+import ink.gfwl.social.properties.AliLoginProperties;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,8 +23,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class AliLoginUtil {
 
-    @Autowired(required = false)
-    private AliLoginProperties aliLoginProperties;
+    private final AliLoginProperties aliLoginProperties;
+
+    public AliLoginUtil(AliLoginProperties aliLoginProperties) {
+        this.aliLoginProperties = aliLoginProperties;
+    }
 
     /**
      * 支付宝登录

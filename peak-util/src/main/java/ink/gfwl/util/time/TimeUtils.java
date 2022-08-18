@@ -89,8 +89,14 @@ public class TimeUtils {
         return calendar.getTimeInMillis() / 1000;
     }
 
-    public static void main(String[] args) {
-        long timeSeconds = getTimeSeconds(TimeUtils.YEAR);
-        System.out.println(format(timeSeconds*1000));
+    /**
+     * 获取相差天数
+     * @param current 当前时间
+     * @param target 目标文件
+     * @return 天数
+     */
+    public static Long differDays(Date current, Date target){
+        return Math.abs((current.getTime() - target.getTime())/86400000) + 1;
     }
+
 }

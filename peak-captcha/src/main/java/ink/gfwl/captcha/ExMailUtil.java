@@ -4,8 +4,7 @@ package ink.gfwl.captcha;
 import com.sun.mail.util.MailSSLSocketFactory;
 import ink.gfwl.captcha.properties.ExMailProperties;
 import ink.gfwl.common.lang.ObjectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -23,11 +22,14 @@ import java.util.Properties;
  * @version 1.0
  * @since 1.0
  */
-@Service
+@Component
 public class ExMailUtil {
 
-    @Autowired(required = false)
-    private ExMailProperties exMailProperties;
+    private final ExMailProperties exMailProperties;
+
+    public ExMailUtil(ExMailProperties exMailProperties) {
+        this.exMailProperties = exMailProperties;
+    }
 
     /**
      * 邮件发送

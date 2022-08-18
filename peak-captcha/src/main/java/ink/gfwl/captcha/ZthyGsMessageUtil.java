@@ -1,11 +1,10 @@
 package ink.gfwl.captcha;
 
 import com.alibaba.fastjson.JSONObject;
-import ink.gfwl.common.http.RestTemplateUtil;
-import ink.gfwl.captcha.properties.ZthySmsProperties;
 import ink.gfwl.captcha.model.ZthyGsMessageRequest;
+import ink.gfwl.captcha.properties.ZthySmsProperties;
+import ink.gfwl.common.http.RestTemplateUtil;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -37,8 +36,11 @@ import java.util.Map;
 @Component
 public class ZthyGsMessageUtil {
 
-    @Autowired(required = false)
-    private ZthySmsProperties zthySmsProperties;
+    private final ZthySmsProperties zthySmsProperties;
+
+    public ZthyGsMessageUtil(ZthySmsProperties zthySmsProperties) {
+        this.zthySmsProperties = zthySmsProperties;
+    }
 
     /**
      * 国际短信认证头

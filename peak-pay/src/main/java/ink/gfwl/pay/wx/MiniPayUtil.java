@@ -10,8 +10,7 @@ import ink.gfwl.pay.properties.WxMiniPayProperties;
 import ink.gfwl.pay.util.PayUtil;
 import ink.gfwl.pay.wx.model.OrderReturnInfo;
 import ink.gfwl.pay.wx.model.WxPayRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
@@ -23,16 +22,19 @@ import java.util.Map;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class MiniPayUtil {
 
-    @Autowired(required = false)
-    private WxMiniPayProperties wxMiniPayProperties;
+    private final WxMiniPayProperties wxMiniPayProperties;
+
+    public MiniPayUtil(WxMiniPayProperties wxMiniPayProperties) {
+        this.wxMiniPayProperties = wxMiniPayProperties;
+    }
 
     /**
      * <p>预下单</p>
-     * <p>JAVA接口文档地址: https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1</p>
-     * <p>小程序文档地址: https://developers.weixin.qq.com/miniprogram/dev/api/payment/wx.requestPayment.html</p>
+     * <p>JAVA接口文档地址: <a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1">JAVA接口文档地址</a></p>
+     * <p>小程序文档地址: <a href="https://developers.weixin.qq.com/miniprogram/dev/api/payment/wx.requestPayment.html">小程序文档地址<a/></p>
      * @param paymentBody 支付参数
      * @return 下单结果
      */

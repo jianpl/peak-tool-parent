@@ -8,8 +8,7 @@ import com.qcloud.cos.exception.CosServiceException;
 import com.qcloud.cos.model.*;
 import com.qcloud.cos.region.Region;
 import ink.gfwl.oss.properties.TencentCosProperties;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 
@@ -17,13 +16,16 @@ import java.io.File;
  * 腾讯云对象存储
  * @author jianpòlan
  * @version 1.0
- * <p>https://github.com/tencentyun/cos-java-sdk-v5/tree/master/src/main/java/com/qcloud/cos/demo</p>
+ * <p><a href="https://github.com/tencentyun/cos-java-sdk-v5/tree/master/src/main/java/com/qcloud/cos/demo">腾讯云COS文档</a></p>
  **/
-@Service
+@Component
 public class TencentCosUtil {
 
-    @Autowired
-    private TencentCosProperties tencentCosProperties;
+    private final TencentCosProperties tencentCosProperties;
+
+    public TencentCosUtil(TencentCosProperties tencentCosProperties) {
+        this.tencentCosProperties = tencentCosProperties;
+    }
 
     /**
      * 初始化CosClient相关配置， appid、accessKey、secretKey、region

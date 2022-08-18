@@ -6,13 +6,12 @@ import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.sms.v20190711.SmsClient;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
-import ink.gfwl.common.lang.Affirm;
-import ink.gfwl.captcha.properties.TencentSmsProperties;
 import ink.gfwl.captcha.base.Messages;
 import ink.gfwl.captcha.exception.SmsException;
 import ink.gfwl.captcha.model.MessageSendRequest;
 import ink.gfwl.captcha.model.TencentMessageRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import ink.gfwl.captcha.properties.TencentSmsProperties;
+import ink.gfwl.common.lang.Affirm;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,16 +19,16 @@ import org.springframework.stereotype.Component;
  * @author jianpòlan
  * @version 1.0
  * @since 1.0
- * <p>url: https://github.com/jianpl/peak-tool-parent</p>
+ * <p>url: <a href="https://github.com/jianpl/peak-tool-parent">github</a></p>
  */
 @Component
 public class TencentMessageUtil implements Messages {
 
-    @Autowired(required = false)
-    private TencentSmsProperties tencentSmsProperties;
+    private final TencentSmsProperties tencentSmsProperties;
 
-
-
+    public TencentMessageUtil(TencentSmsProperties tencentSmsProperties) {
+        this.tencentSmsProperties = tencentSmsProperties;
+    }
 
     /**
      * 短信发送

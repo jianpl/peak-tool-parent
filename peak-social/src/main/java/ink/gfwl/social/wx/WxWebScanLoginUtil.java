@@ -3,14 +3,13 @@ package ink.gfwl.social.wx;
 import com.alibaba.fastjson.JSONObject;
 import ink.gfwl.common.http.RestTemplateUtil;
 import ink.gfwl.common.lang.Affirm;
-import ink.gfwl.social.properties.WxWebProperties;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
 import ink.gfwl.social.exception.SocialException;
+import ink.gfwl.social.properties.WxWebProperties;
 import ink.gfwl.social.wx.model.LangEnum;
 import ink.gfwl.social.wx.model.WxUserInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 
@@ -19,11 +18,14 @@ import java.nio.charset.StandardCharsets;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class WxWebScanLoginUtil {
 
-    @Autowired(required = false)
-    private WxWebProperties webProperties;
+    private final WxWebProperties webProperties;
+
+    public WxWebScanLoginUtil(WxWebProperties webProperties) {
+        this.webProperties = webProperties;
+    }
 
     /**
      * <p>微信扫码登录<br>

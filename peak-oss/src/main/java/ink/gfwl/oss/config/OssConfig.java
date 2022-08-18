@@ -11,6 +11,5 @@ import org.springframework.context.annotation.Configuration;
  **/
 @Configuration
 @ComponentScan(value = {"ink.gfwl.oss"})
-@ConfigurationPropertiesScan(basePackages = {"ink.gfwl.oss"})
-public class OssConfig {
-}
+@ConfigurationPropertiesScan(basePackages = {"ink.gfwl.oss.properties"})
+public class OssConfig { }

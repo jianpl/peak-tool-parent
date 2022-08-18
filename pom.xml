@@ -6,7 +6,7 @@
 
     <groupId>ink.gfwl</groupId>
     <artifactId>peak-tool-parent</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <modules>
         <!-- 公共模块 -->
@@ -21,6 +21,7 @@
         <module>peak-oss</module>
         <!-- 工具模块 -->
         <module>peak-util</module>
+        <module>peak-example</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -29,8 +30,8 @@
     <url>https://github.com/jianpl/peak-tool-parent</url>
 
     <properties>
+        <peak.version>1.0.3</peak.version>
         <spring.boot.version>2.7.0</spring.boot.version>
-        <peak.version>1.0.2</peak.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <sms.aliyun.version>1.0.13</sms.aliyun.version>

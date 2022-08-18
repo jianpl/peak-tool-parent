@@ -6,8 +6,7 @@ import com.aliyun.oss.model.Bucket;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.ObjectMetadata;
 import ink.gfwl.oss.properties.AliYunOssProperties;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
@@ -19,19 +18,32 @@ import java.io.InputStream;
  * 阿里云OSS工具
  * @author jianpòlan
  * @version 1.0
- * <p>url: https://github.com/jianpl/peak-tool-parent</p>
+ * <p>url: <a href="https://github.com/jianpl/peak-tool-parent">github</a></p>
  **/
-@Service
+@Component
 public class AliYunOssUtil {
 
-    @Autowired
-    private AliYunOssProperties aliYunOssProperties;
+    private final AliYunOssProperties aliYunOssProperties;
 
     /**
      * 获取阿里云OSS客户端对象
      */
-    private final OSSClient ossClient = new OSSClient(aliYunOssProperties.getEndPoint(), new DefaultCredentialProvider(aliYunOssProperties.getAccessKeyId() ,aliYunOssProperties.getAccessKeySecret()), null);
+    private OSSClient ossClient;
 
+    public AliYunOssUtil(AliYunOssProperties aliYunOssProperties) {
+        this.aliYunOssProperties = aliYunOssProperties;
+    }
+
+
+    /**
+     * 获取阿里云OSS客户端对象
+     */
+    private OSSClient getOssClient(){
+        if(ossClient == null){
+            ossClient = new OSSClient(aliYunOssProperties.getEndPoint(), new DefaultCredentialProvider(aliYunOssProperties.getAccessKeyId() ,aliYunOssProperties.getAccessKeySecret()), null);
+        }
+        return ossClient;
+    }
     /**
      * 是否使用随机文件名
      */
@@ -52,10 +64,11 @@ public class AliYunOssUtil {
      * @return bucketName
      */
     public String createBucketName(String bucketName) {
+        OSSClient ossClient = getOssClient();
         // 存储空间
-        if (!ossClient.doesBucketExist(bucketName)) {
+        if (!this.ossClient.doesBucketExist(bucketName)) {
             // 创建存储空间
-            Bucket bucket = ossClient.createBucket(bucketName);
+            Bucket bucket = this.ossClient.createBucket(bucketName);
             return bucket.getName();
         }
         return bucketName;
@@ -66,6 +79,7 @@ public class AliYunOssUtil {
      * @param bucketName 存储空间
      */
     public void deleteBucket(String bucketName) {
+        OSSClient ossClient = getOssClient();
         ossClient.deleteBucket(bucketName);
     }
 
@@ -76,6 +90,7 @@ public class AliYunOssUtil {
      * @return 文件夹名
      */
     public String createFolder(String bucketName, String folder) {
+        OSSClient ossClient = getOssClient();
         // 文件夹名
         // 判断文件夹是否存在，不存在则创建
         if (!ossClient.doesObjectExist(bucketName, folder)) {
@@ -95,6 +110,7 @@ public class AliYunOssUtil {
      * @param pathFileName bucketName + folder + filename
      */
     public void deleteFile(String bucketName, String folder, String pathFileName) {
+        OSSClient ossClient = getOssClient();
         ossClient.deleteObject(bucketName, folder + pathFileName);
     }
 
@@ -173,6 +189,7 @@ public class AliYunOssUtil {
     public String uploadByInputStream(InputStream inputStream,String fileName, long fileSize, String bucketName, String folder) {
         String resultStr = null;
         try {
+            OSSClient ossClient = getOssClient();
             // 创建上传Object的Metadata
             ObjectMetadata metadata = new ObjectMetadata();
             // 上传的文件的长度

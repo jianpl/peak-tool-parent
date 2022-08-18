@@ -3,12 +3,12 @@ package ink.gfwl.captcha;
 import ink.gfwl.captcha.model.GraphResult;
 import ink.gfwl.captcha.properties.GraphCaptchaProperties;
 import ink.gfwl.common.lang.ObjectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -16,18 +16,20 @@ import java.util.Random;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
-
+@Component
 public class GraphCaptchaUtil {
 
-    @Autowired(required = false)
-    private GraphCaptchaProperties captchaProperties;
+    private final GraphCaptchaProperties captchaProperties;
 
     // 默认验证码字符集
     private final char[] chars = {
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+
+    public GraphCaptchaUtil(GraphCaptchaProperties captchaProperties) {
+        this.captchaProperties = captchaProperties;
+    }
 
     /**
      * 生成图片验证码
@@ -50,7 +52,7 @@ public class GraphCaptchaUtil {
         // 绘制矩形背景
         graphic.fillRect(0, 0, captchaProperties.getWidth(), captchaProperties.getHeight());
         // 画随机字符
-        Random ran = new Random();
+        SecureRandom ran = new SecureRandom();
         int codeWidth = captchaProperties.getWidth() / (captchaProperties.getSize() + 1);
         int y = captchaProperties.getHeight() * 3 / 4;
         for (int i = 0; i < captchaProperties.getSize(); i++) {

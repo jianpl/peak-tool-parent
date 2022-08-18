@@ -2,16 +2,15 @@ package ink.gfwl.captcha;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import ink.gfwl.captcha.base.Messages;
 import ink.gfwl.captcha.exception.SmsException;
 import ink.gfwl.captcha.model.MessageSendRequest;
 import ink.gfwl.captcha.model.ZthyCustomMessageRequest;
 import ink.gfwl.captcha.model.ZthyMessageRequest;
+import ink.gfwl.captcha.model.ZthyResponse;
 import ink.gfwl.captcha.properties.ZthySmsProperties;
 import ink.gfwl.common.http.RestTemplateUtil;
 import ink.gfwl.common.lang.Affirm;
 import ink.gfwl.util.security.Md5Utils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -37,18 +36,20 @@ import org.springframework.stereotype.Component;
  * @version 1.0
  **/
 @Component
-public class ZthyMessageUtil implements Messages {
+public class ZthyMessageUtil{
 
-    @Autowired(required = false)
-    private ZthySmsProperties zthySmsProperties;
+    private final ZthySmsProperties zthySmsProperties;
+
+    public ZthyMessageUtil(ZthySmsProperties zthySmsProperties) {
+        this.zthySmsProperties = zthySmsProperties;
+    }
 
     /**
      * 短信发送
      * @param messageSendRequest 发送参数
      * @return 发送结果
      */
-    @Override
-    public String sendMessage(MessageSendRequest messageSendRequest) {
+    public ZthyResponse sendMessage(MessageSendRequest messageSendRequest) {
         Affirm.isNull(messageSendRequest, ()->new SmsException(500, "参数为空"));
         Affirm.isFalse(messageSendRequest instanceof ZthyMessageRequest, ()->new SmsException(501, "参数异常"));
         ZthyMessageRequest zthyMessageRequest = (ZthyMessageRequest)messageSendRequest;
@@ -69,7 +70,7 @@ public class ZthyMessageUtil implements Messages {
         record.put("tpContent", zthyMessageRequest.getParam());
         records.add(record);
         requestJson.put("records", records);
-        return RestTemplateUtil.postForBody("https://api.mix2.zthysms.com/v2/sendSmsTp", requestJson, String.class);
+        return JSONObject.parseObject(RestTemplateUtil.postForBody("https://api.mix2.zthysms.com/v2/sendSmsTp", requestJson, String.class), ZthyResponse.class);
     }
 
     /**
@@ -77,7 +78,7 @@ public class ZthyMessageUtil implements Messages {
      * @param messageSendRequest 参数
      * @return 结果
      */
-    public String sendCustomMessage(ZthyCustomMessageRequest messageSendRequest){
+    public ZthyResponse sendCustomMessage(ZthyCustomMessageRequest messageSendRequest){
         String url = "https://api.mix2.zthysms.com/v2/sendSms";
         long tKey = System.currentTimeMillis() / 1000;
         JSONObject json = new JSONObject();
@@ -91,7 +92,7 @@ public class ZthyMessageUtil implements Messages {
         json.put("mobile", messageSendRequest.getPhone());
         //内容
         json.put("content", messageSendRequest.getContent());
-        return RestTemplateUtil.postForBody(url, json, String.class);
+        return JSONObject.parseObject(RestTemplateUtil.postForBody(url, json, String.class), ZthyResponse.class);
     }
 
     private String sign(String password, long tKey){

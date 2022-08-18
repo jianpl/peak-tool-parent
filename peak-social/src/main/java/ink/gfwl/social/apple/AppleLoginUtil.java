@@ -2,10 +2,10 @@ package ink.gfwl.social.apple;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.internal.util.codec.Base64;
-import ink.gfwl.social.exception.SocialException;
 import ink.gfwl.social.base.LoginRequest;
 import ink.gfwl.social.base.LoginResponse;
-import org.springframework.stereotype.Service;
+import ink.gfwl.social.exception.SocialException;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 
@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class AppleLoginUtil {
 
     /**

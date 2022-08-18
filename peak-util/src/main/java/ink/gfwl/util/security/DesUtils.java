@@ -2,7 +2,6 @@ package ink.gfwl.util.security;
 
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.DES;
-import lombok.NoArgsConstructor;
 
 import java.nio.charset.StandardCharsets;
 
@@ -12,7 +11,6 @@ import java.nio.charset.StandardCharsets;
  * @version 1.0
  * @since 1.0.2
  **/
-@NoArgsConstructor
 public final class DesUtils {
 
     /**

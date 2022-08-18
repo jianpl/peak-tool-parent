@@ -23,7 +23,7 @@ public final class Md5Utils {
     }
 
     /**
-     * MD5
+     * MD5(不安全)
      * @param str 待加密
      * @param upper 大写
      * @return 结果

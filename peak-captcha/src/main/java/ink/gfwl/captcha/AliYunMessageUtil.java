@@ -15,7 +15,6 @@ import ink.gfwl.captcha.base.Messages;
 import ink.gfwl.captcha.exception.SmsException;
 import ink.gfwl.captcha.model.AliYunSendRequest;
 import ink.gfwl.captcha.model.MessageSendRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,14 +22,17 @@ import org.springframework.stereotype.Component;
  * @author jianpòlan
  * @version 1.0
  * @since 1.0
- * <p>url: https://github.com/jianpl/peak-tool-parent</p>
+ * <p>url: <a href="https://github.com/jianpl/peak-tool-parent">github</a></p>
  * <a href='https://help.aliyun.com/document_detail/71160.html'>阿里云接口文档</a>
  */
 @Component
 public class AliYunMessageUtil implements Messages {
 
-    @Autowired(required = false)
-    private AliSmsProperties aliSmsProperties;
+    private final AliSmsProperties aliSmsProperties;
+
+    public AliYunMessageUtil(AliSmsProperties aliSmsProperties) {
+        this.aliSmsProperties = aliSmsProperties;
+    }
 
     /**
      * 短信发送

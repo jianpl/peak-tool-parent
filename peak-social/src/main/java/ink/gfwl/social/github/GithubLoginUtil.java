@@ -3,22 +3,21 @@ package ink.gfwl.social.github;
 import ink.gfwl.common.http.RestTemplateUtil;
 import ink.gfwl.social.properties.GithubProperties;
 import ink.gfwl.social.base.LoginRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Component;
 
 /**
  * github网页授权登录
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class GithubLoginUtil {
 
-    @Autowired(required = false)
-    private GithubProperties githubProperties;
+    private final GithubProperties githubProperties;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    public GithubLoginUtil(GithubProperties githubProperties) {
+        this.githubProperties = githubProperties;
+    }
 
     /**
      * 获取github登录地址，页面直接跳转

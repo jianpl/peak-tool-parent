@@ -12,15 +12,14 @@ import com.alipay.api.request.AlipayTradeRefundRequest;
 import com.alipay.api.response.AlipayTradeAppPayResponse;
 import com.alipay.api.response.AlipayTradeRefundResponse;
 import ink.gfwl.common.lang.Affirm;
-import ink.gfwl.pay.properties.AliPayProperties;
 import ink.gfwl.pay.ali.model.AlipayRequest;
 import ink.gfwl.pay.ali.model.RefundRequest;
 import ink.gfwl.pay.base.CallbackParams;
 import ink.gfwl.pay.base.PaymentResponse;
 import ink.gfwl.pay.exception.PayException;
+import ink.gfwl.pay.properties.AliPayProperties;
 import ink.gfwl.pay.util.PayUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -30,11 +29,14 @@ import java.util.Map;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class AliPayUtil {
 
-    @Autowired(required = false)
-    private AliPayProperties aliPayProperties;
+    private final AliPayProperties aliPayProperties;
+
+    public AliPayUtil(AliPayProperties aliPayProperties) {
+        this.aliPayProperties = aliPayProperties;
+    }
 
     private AlipayClient getAlipayClient(){
         return new DefaultAlipayClient(aliPayProperties.getGetWay(), aliPayProperties.getAppId(), aliPayProperties.getPrivateKey(),"json","UTF-8", aliPayProperties.getPubicKey(),"RSA2");

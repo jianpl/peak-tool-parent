@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="peak-common" />
+        <module name="peak-pay" />
+        <module name="peak-example" />
+        <module name="peak-oss" />
+        <module name="peak-captcha" />
+        <module name="peak-util" />
+        <module name="peak-social" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="peak-express" target="1.8" />
+      <module name="peak-jd" target="1.8" />
+      <module name="peak-sample" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="peak-captcha" options="" />
+      <module name="peak-common" options="" />
+      <module name="peak-express" options="-parameters" />
+      <module name="peak-jd" options="-parameters" />
+      <module name="peak-oss" options="" />
+      <module name="peak-pay" options="" />
+      <module name="peak-sample" options="-parameters" />
+      <module name="peak-social" options="" />
+      <module name="peak-util" options="" />
+    </option>
+  </component>
+</project>

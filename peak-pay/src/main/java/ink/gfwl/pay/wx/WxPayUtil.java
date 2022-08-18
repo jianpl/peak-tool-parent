@@ -20,8 +20,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLContext;
 import javax.servlet.http.HttpServletRequest;
@@ -37,17 +36,20 @@ import java.util.HashMap;
  * @author jianpòlan
  * @version 1.0
  **/
-@Service
+@Component
 public class WxPayUtil {
 
-    @Autowired(required = false)
-    private WxPayProperties wxPayProperties;
+    private final WxPayProperties wxPayProperties;
 
     //请求器的配置
     private RequestConfig requestConfig;
 
     //HTTP请求器
     private CloseableHttpClient httpClient;
+
+    public WxPayUtil(WxPayProperties wxPayProperties) {
+        this.wxPayProperties = wxPayProperties;
+    }
 
     /**
      * 微信支付
